@@ -1,12 +1,3 @@
-# CppCourse
-C++ course delivered in mech-math KNU
+# C++ projects
 
-# Lectures
-Full lectures and presentations;
-Exampples
-
-# Projects
-C - projects :
-https://github.com/albatros78/C-Projects
-
-C++ projects
+Korzhuk Andrew Grup-I. Project DateTime. (C++98)
