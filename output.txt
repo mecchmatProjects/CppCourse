@@ -1,0 +1,9 @@
+
+A + B = 	2 + 6x + 5x^2 + 4x^3
+A - B = 	0 + 2x + 1x^2 + 4x^3
+A * B = 	1 + 6x + 13x^2 + 18x^3 + 14x^4 + 8x^5
+A / B = 	127 + 2x
+A % B = 	130 + 4x
+dA/dx = 	4 + 6x + 12x^2
+integral Adx = 	0 + 1x + 2x^2 + 1x^3 + 1x^4
+integral Adx from 0 to 10 = 	202
