@@ -1,0 +1,36 @@
+-----------Date--------------
+DateA: 1974.9.8 - Sunday
+Next day dateA: 1974.9.9
+Previous day dateA: 1974.9.7
+dateA to Time: 721240.0.0.0
+DateA + 366 days: 1975.9.9
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DateB: 1976.11.3 - Wednesday
+Next day dateB: 1976.11.4
+Previous day dateB: 1976.11.2
+dateB to Time: 722027.0.0.0
+DateB + 366 days: 1977.11.4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DateB > DateA
+Days between: 787
+DateA - DateB = 2.2.25
+DateA + DateB = 3953.7.14
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+-----------Time--------------
+TimeA: 1.7.21.11
+TimeA + DateA = 1975.9.10
+TimeA - DateB = 1977.11.3
+TimeA * 5 = 6.12.45.55
+TimeA / 7 = 0.4.28.44
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TimeB: 1.9.4.53
+TimeB + DateA = 1975.9.10
+TimeB - DateB = 1977.11.3
+TimeB * 0 = 0.0.0.0
+TimeB / 0 = Zero division error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+timeB > timeA
+timeA - timeB = 0.1.43.42
+timeA + timeB = 2.16.26.4
