@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/yrik/Documents/Other/C++/Projects/DateTimeArestonok/main_test.cpp
+iostream
+-
+src/Date.h
+/home/yrik/Documents/Other/C++/Projects/DateTimeArestonok/src/Date.h
+src/Time.h
+/home/yrik/Documents/Other/C++/Projects/DateTimeArestonok/src/Time.h
+
+/home/yrik/Documents/Other/C++/Projects/DateTimeArestonok/src/Date.h
+
+/home/yrik/Documents/Other/C++/Projects/DateTimeArestonok/src/Time.cpp
+iostream
+-
+string
+-
+Date.h
+/home/yrik/Documents/Other/C++/Projects/DateTimeArestonok/src/Date.h
+
+/home/yrik/Documents/Other/C++/Projects/DateTimeArestonok/src/Time.h
+Date.h
+/home/yrik/Documents/Other/C++/Projects/DateTimeArestonok/src/Date.h
+
