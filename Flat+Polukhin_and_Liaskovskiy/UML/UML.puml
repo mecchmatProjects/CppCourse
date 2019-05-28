@@ -1,0 +1,237 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Action {
+	+Action()
+	+Action(double distance, double angle)
+	+~Action()
+	+GetAngle() : double
+	+GetDistance() : double
+	-angle : double
+	-distance : double
+}
+
+
+class Apartment {
+	+Apartment()
+	+~Apartment()
+	+GetDoor(unsigned int i) : Door
+	+GetWall(unsigned int i) : Wall
+	+isCorrect() : bool
+	+GetDoors() : std::vector<Door>
+	-doors : std::vector<Door>
+	+GetWalls() : std::vector<Wall>
+	-walls : std::vector<Wall>
+	+GetDoorsCount() : unsigned int
+	+GetWallsCount() : unsigned int
+}
+
+
+class Door {
+	+Door()
+	+~Door()
+	+GetP1() : Point
+	+GetP2() : Point
+	-p1 : Point
+	-p2 : Point
+}
+
+
+class Flat {
+	+Flat()
+	+~Flat()
+	+GetApartment(unsigned int i) : Apartment
+	+isComplete() : bool
+	+GetApartments() : std::vector<Apartment>
+	-apartments : std::vector<Apartment>
+	+GetHallsCount() : unsigned int
+	+GetRoomsCount() : unsigned int
+	-hallsCount : unsigned int
+	-roomsCount : unsigned int
+}
+
+
+class Furniture {
+	+Furniture()
+	+~Furniture()
+	+GetPoints() : std::vector<Point>
+	-points : std::vector<Point>
+}
+
+
+class Hall {
+	+Hall()
+	+~Hall()
+}
+
+
+class Point {
+	+Point()
+	+Point(double x, double y)
+	+~Point()
+	+GetX() : double
+	+GetY() : double
+	-x : double
+	-y : double
+}
+
+
+class Robot {
+	+Robot()
+	+Robot(Point start, unsigned int max_stamina, Flat* flat, Target* target)
+	+~Robot()
+	-NextAction() : Action
+	-flat : Flat*
+	-CenterOfMass() : Point
+	-position : Point
+	-target : Target*
+	-way : Way
+	-DistancePP(Point p1, Point p2) : double
+	-DistancePP(double x1, double y1, double x2, double y2) : double
+	-GetCos(Point p) : double
+	-angle : double
+	-sumOfMassX : double
+	-sumOfMassY : double
+	-SignedTriangleArea(Point p1, Point p2, Point p3) : int
+	-Cross() : std::pair<double , std::vector<Point> >
+	+GetCurrentApartmentId() : unsigned int
+	-max_stamina : unsigned int
+	-stamina : unsigned int
+	+Start() : void
+}
+
+
+class Room {
+	+Room()
+	+~Room()
+	+GetFurniture(unsigned int i) : Furniture
+	+GetFurnitures() : std::vector<Furniture>
+	-furnitures : std::vector<Furniture>
+	+GetFurnitureCount() : unsigned int
+}
+
+
+class Target {
+	+Target()
+	+Target(Point point)
+	+Target(unsigned int apartment)
+	+~Target()
+	+GetPoint() : Point
+	-point : Point
+	+GetType() : TargetType
+	-targetType : TargetType
+	+GetApartmentID() : unsigned int
+	-apartment : unsigned int
+}
+
+
+class Task {
+	+Task()
+	+~Task()
+	-flat : Flat
+	-target : Target
+	-robots : std::vector<Robot>
+	-results : std::vector<uint>
+	+GetAverageScore() : unsigned int
+	-DoTest() : void
+}
+
+
+class Wall {
+	+Wall()
+	+~Wall()
+	+GetP1() : Point
+	+GetP2() : Point
+	-p1 : Point
+	-p2 : Point
+}
+
+
+class Way {
+	+Way()
+	+~Way()
+	+GetAction(unsigned int i) : Action
+	+GetActions() : std::vector<Action>
+	-actions : std::vector<Action>
+	+AddAction(Action action) : void
+}
+
+
+enum TargetType {
+	APARTMENT
+	POINT
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Apartment <|-- Hall
+
+
+Apartment <|-- Room
+
+
+
+
+
+/' Aggregation relationships '/
+
+Apartment o-- Door
+
+
+Apartment o-- Wall
+
+
+Door "2" o-- Point
+
+
+Flat o-- Apartment
+
+
+Furniture o-- Point
+
+
+Robot o-- Flat
+
+
+Robot o-- Point
+
+
+Robot o-- Target
+
+
+Robot o-- Way
+
+
+Room o-- Furniture
+
+
+Target o-- Point
+
+
+Task o-- Flat
+
+
+Task o-- Robot
+
+
+Task o-- Target
+
+
+Wall "2" o-- Point
+
+
+Way o-- Action
+
+
+
+
+@enduml
