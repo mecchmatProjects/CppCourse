@@ -10,3 +10,5 @@ C - projects :
 https://github.com/albatros78/C-Projects
 
 C++ projects
+
+Программный проект написан за стандартом С++11!
