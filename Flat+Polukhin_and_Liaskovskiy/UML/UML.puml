@@ -85,7 +85,6 @@ class Robot {
 	+Robot()
 	+Robot(Point start, unsigned int max_stamina, Flat* flat, Target* target)
 	+~Robot()
-	-NextAction() : Action
 	-flat : Flat*
 	-CenterOfMass() : Point
 	-position : Point
@@ -94,10 +93,12 @@ class Robot {
 	-DistancePP(Point p1, Point p2) : double
 	-DistancePP(double x1, double y1, double x2, double y2) : double
 	-GetCos(Point p) : double
+	-GetTan(Point p) : double
 	-angle : double
 	-sumOfMassX : double
 	-sumOfMassY : double
 	-SignedTriangleArea(Point p1, Point p2, Point p3) : int
+	-NextAction() : std::pair<double , Action>
 	-Cross() : std::pair<double , std::vector<Point> >
 	+GetCurrentApartmentId() : unsigned int
 	-max_stamina : unsigned int
@@ -138,7 +139,7 @@ class Task {
 	-robots : std::vector<Robot>
 	-results : std::vector<uint>
 	+GetAverageScore() : unsigned int
-	-DoTest() : void
+	+DoTest() : void
 }
 
 

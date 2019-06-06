@@ -22,10 +22,11 @@ private:
     double DistancePP(Point p1, Point p2);
     double DistancePP(double x1, double y1, double x2, double y2);
     double GetCos(Point p);
+    double GetTan(Point p);
     Point CenterOfMass();
     int SignedTriangleArea(Point p1, Point p2, Point p3);
     std::pair<double, std::vector<Point> > Cross();
-    Action NextAction();
+    std::pair<double, Action> NextAction();
 
 public:
     Robot();

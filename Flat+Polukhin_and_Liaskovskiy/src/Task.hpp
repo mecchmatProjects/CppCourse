@@ -15,10 +15,10 @@ private:
     Target target;
     std::vector<Robot> robots;
     std::vector<uint> results;
-    void DoTest();
 
 public:
     Task();
     ~Task();
+    void DoTest();
     uint GetAverageScore();
 };

@@ -7,11 +7,8 @@ Task::~Task()
 
 Task::Task()
 {
-    this->flat = Flat();
-    this->target = Target();
-
     std::cout << "\nInput start position x y:\n";
-    int x, y;
+    double x, y;
     std::cin >> x >> y;
     Point start = Point(x, y);
 
