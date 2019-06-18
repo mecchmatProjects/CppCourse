@@ -9,4 +9,5 @@ Exampples
 C - projects :
 https://github.com/albatros78/C-Projects
 
-C++ projects
+C++ projects:
+https://github.com/mecchmatProjects/CppCourse
