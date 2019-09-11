@@ -205,19 +205,32 @@ public:
     Employee(string, unsigned);
     explicit Employee(string);
 
+    void set_job(Profession);
+
     void set_years(unsigned);
     unsigned get_years();
 
     float calc_wages();
     float calc_product_cost();
     float calc_equipment_cost();
+
+    void push_back_product(const Product);
+    void push_back_equipment(const Equipment);
+
+    void pop_by_index_product(unsigned);
+    void pop_by_index_equipment(unsigned);
 };
 
-Employee::Employee() : Person(), Years() {}
+Employee::Employee() : Person(), Years(), Equipment_in_use(), Products_in_use() {}
 
-Employee::Employee(string s) : Person(s), Years() {}
+Employee::Employee(string s) : Person(s), Years(), Equipment_in_use(), Products_in_use() {}
 
-Employee::Employee(string s, unsigned y) : Person(s), Years(y) {}
+Employee::Employee(string s, unsigned y) : Person(s), Years(y), Equipment_in_use(), Products_in_use() {}
+
+void Employee::set_job(Profession P)
+{
+    this->Job = P;
+}
 
 void Employee::set_years(unsigned y)
 {
@@ -231,9 +244,6 @@ unsigned Employee::get_years()
 
 float Employee::calc_wages()
 {
-    if(this->Job.get_t().empty() && !this->Job.get_w())
-        throw runtime_error("Employee doesn't have any job yet..\n");
-
     return this->Job.calc_wages(this->Years) + 0.001 * (this->calc_equipment_cost() + this->calc_product_cost());
 }
 
@@ -257,6 +267,26 @@ float Employee::calc_equipment_cost()
     return final_sum;
 }
 
+void Employee::push_back_equipment(const Equipment E)
+{
+    this->Equipment_in_use.push_back(E);
+}
+
+void Employee::push_back_product(const Product P)
+{
+    this->Products_in_use.push_back(P);
+}
+
+void Employee::pop_by_index_equipment(unsigned I)
+{
+    this->Equipment_in_use.erase(Equipment_in_use.begin() + I);
+}
+
+void Employee::pop_by_index_product(unsigned I)
+{
+    this->Products_in_use.erase(Products_in_use.begin() + I);
+}
+
 class Manager: public Employee
 {
 private:
@@ -266,13 +296,14 @@ public:
     explicit Manager(string);
     Manager(string, unsigned);
 
-    void push_back_employee(const Employee&);
+    void push_back_employee(const Employee);
     void pop_employee_by_index(unsigned);
 
     Employee get_employee_by_index(unsigned);
 
     float calc_employees_e_values();
     float calc_employees_p_values();
+    float calc_employees_w_values();
 };
 
 Manager::Manager() : Employee(), Employees_list() {}
@@ -281,7 +312,7 @@ Manager::Manager(string s) : Employee(s), Employees_list() {}
 
 Manager::Manager(string s, unsigned y) : Employee(s, y), Employees_list() {}
 
-void Manager::push_back_employee(const Employee &EMPLOYEE)
+void Manager::push_back_employee(const Employee EMPLOYEE)
 {
     this->Employees_list.push_back(EMPLOYEE);
 }
@@ -312,6 +343,16 @@ float Manager::calc_employees_p_values()
 
     for(auto& employee : this->Employees_list)
         final_sum += employee.calc_product_cost();
+
+    return final_sum;
+}
+
+float Manager::calc_employees_w_values()
+{
+    float final_sum = 0;
+
+    for(auto& employee : this->Employees_list)
+        final_sum += employee.calc_wages();
 
     return final_sum;
 }
