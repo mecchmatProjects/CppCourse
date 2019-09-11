@@ -90,8 +90,28 @@ private:
     string Title;
     float Cash;
 public:
+    Profession();
+    explicit Profession(string);
+    Profession(string, float);
 
+    void set_t(string);
+    void set_w(float);
+
+    string get_t();
+    float get_w();
+
+    float calc_wages(unsigned);
+
+    friend istream &operator>>(istream&, Product&);
+    friend ostream &operator<<(ostream&, const Product&);
 };
+
+Profession::Profession() : Title(), Cash() {}
+
+Profession::Profession(string s) : Title(s), Cash() {}
+
+Profession::Profession(string s, float w) : Title(s), Cash(w) {}
+
 class Person
 {
 protected:
@@ -174,11 +194,6 @@ public:
     Manager();
     explicit Manager(string);
     Manager(string, unsigned);
-};
-
-class Pluralist: public Employee
-{
-
 };
 
 #endif
