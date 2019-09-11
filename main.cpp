@@ -2,9 +2,6 @@
 
 #include "./headers/trukhan_cpp_project_plant.h"
 
-#include <exception>
-#include <iostream>
-
 void test_person()
 {
     cout << "Start" << endl;

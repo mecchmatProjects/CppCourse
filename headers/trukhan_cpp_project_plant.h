@@ -110,6 +110,25 @@ public:
     friend ostream &operator<<(ostream&, const Profession&);
 };
 
+istream &operator>>(istream &in, Profession &P)
+{
+    string first_result, second_result;
+
+    in >> first_result >> second_result;
+
+    P.set_t(first_result);
+
+    P.set_w(stoi(second_result));
+
+    return in;
+}
+
+ostream &operator<<(ostream &out, const Profession &P)
+{
+    out << P.Title << endl << to_string(P.Cash);
+    return out;
+}
+
 Profession::Profession() : Title(), Cash() {}
 
 Profession::Profession(string s) : Title(s), Cash() {}
@@ -126,7 +145,10 @@ void Profession::set_w(float w)
     this->Cash = w;
 }
 
-
+float Profession::calc_wages(unsigned y)
+{
+    return static_cast<float>((y * 0.1 + 1 ) * this->Cash); // y? because
+}
 
 class Person
 {
@@ -185,6 +207,10 @@ public:
 
     void set_years(unsigned);
     unsigned get_years();
+
+    float calc_wages();
+    float calc_product_cost();
+    float calc_equipment_cost();
 };
 
 Employee::Employee() : Person(), Years() {}
@@ -201,6 +227,34 @@ void Employee::set_years(unsigned y)
 unsigned Employee::get_years()
 {
     return this->Years;
+}
+
+float Employee::calc_wages()
+{
+    if(this->Job.get_t().empty() && !this->Job.get_w())
+        throw runtime_error("Employee doesn't have any job yet..\n");
+
+    return this->Job.calc_wages(this->Years) + 0.001 * (this->calc_equipment_cost() + this->calc_product_cost());
+}
+
+float Employee::calc_product_cost()
+{
+    float final_sum = 0;
+
+    for(auto& product : this->Products_in_use)
+        final_sum += product.get_v();
+
+    return final_sum;
+}
+
+float Employee::calc_equipment_cost()
+{
+    float final_sum = 0;
+
+    for(auto& product : this->Equipment_in_use)
+        final_sum += product.get_v();
+
+    return final_sum;
 }
 
 class Manager: public Employee
