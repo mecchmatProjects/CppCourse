@@ -29,11 +29,66 @@ void test_person()
 void test_employee()
 {
     cout << "Start" << endl;
+
+    Product P1("TEST", 100);
+    Equipment E1("TEST1", 150), E2("TEST1", 175);
+
+    Profession PROF;
+
+    cin >> PROF;
+
+    Employee TEST_UNIT_1;
+
+    TEST_UNIT_1.set_name("Alyona");
+    TEST_UNIT_1.set_job(PROF);
+
+    TEST_UNIT_1.push_back_product(P1);
+
+    TEST_UNIT_1.push_back_equipment(E1);
+    TEST_UNIT_1.push_back_equipment(E2);
+
+    TEST_UNIT_1.set_years(10);
+
+    cout << TEST_UNIT_1.calc_wages()          << endl
+         << TEST_UNIT_1.calc_product_cost()   << endl
+         << TEST_UNIT_1.calc_equipment_cost() << endl;
 }
 
 void test_manager()
 {
     cout << "Start" << endl;
+
+    Product P1("TEST", 75);
+    Equipment E1("TEST1", 25), E2("TEST1", 15);
+
+    Profession PROF;
+
+    PROF.set_t("TEST_UNIT_1");
+
+    Employee TEST_UNIT_1;
+
+    TEST_UNIT_1.set_name("User_Test_Unit");
+    TEST_UNIT_1.set_job(PROF);
+
+    TEST_UNIT_1.push_back_product(P1);
+
+    TEST_UNIT_1.push_back_equipment(E1);
+    TEST_UNIT_1.push_back_equipment(E2);
+
+    TEST_UNIT_1.set_years(9);
+
+    Manager TEST_UNIT_MANAGER;
+
+    TEST_UNIT_MANAGER.set_name("Ernest");
+
+    for(int i=0; i<3; i++)
+        TEST_UNIT_MANAGER.push_back_employee(TEST_UNIT_1);
+
+    cout << TEST_UNIT_MANAGER.calc_employees_e_values() << endl
+         << TEST_UNIT_MANAGER.calc_employees_p_values() << endl
+         << TEST_UNIT_MANAGER.calc_employees_w_values() << endl;
+
+    TEST_UNIT_MANAGER.pop_employee_by_index(1);
 }
 
 void test_product()
