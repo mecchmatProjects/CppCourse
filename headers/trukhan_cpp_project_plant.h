@@ -265,6 +265,55 @@ public:
     Manager();
     explicit Manager(string);
     Manager(string, unsigned);
+
+    void push_back_employee(const Employee&);
+    void pop_employee_by_index(unsigned);
+
+    Employee get_employee_by_index(unsigned);
+
+    float calc_employees_e_values();
+    float calc_employees_p_values();
 };
+
+Manager::Manager() : Employee(), Employees_list() {}
+
+Manager::Manager(string s) : Employee(s), Employees_list() {}
+
+Manager::Manager(string s, unsigned y) : Employee(s, y), Employees_list() {}
+
+void Manager::push_back_employee(const Employee &EMPLOYEE)
+{
+    this->Employees_list.push_back(EMPLOYEE);
+}
+
+void Manager::pop_employee_by_index(unsigned I)
+{
+    this->Employees_list.erase(Employees_list.begin() + I);
+}
+
+Employee Manager::get_employee_by_index(unsigned I)
+{
+    return this->Employees_list[I];
+}
+
+float Manager::calc_employees_e_values()
+{
+    float final_sum = 0;
+
+    for(auto& employee : this->Employees_list)
+        final_sum += employee.calc_equipment_cost();
+
+    return final_sum;
+}
+
+float Manager::calc_employees_p_values()
+{
+    float final_sum = 0;
+
+    for(auto& employee : this->Employees_list)
+        final_sum += employee.calc_product_cost();
+
+    return final_sum;
+}
 
 #endif
