@@ -52,16 +52,39 @@ void test_product()
     TEST_UNIT_1.set_v(100);
 
     cout << TEST_UNIT_1.get_t() << '\t' << TEST_UNIT_1.get_v() << endl;
+
+    fstream file;
+
+    file.open("../test_product.txt", ios::out);
+    file << TEST_UNIT_1;
+    file.close();
 }
 
 void test_equipment()
 {
     cout << "Start" << endl;
+
+    Equipment TEST_UNIT_1;
+
+    cin >> TEST_UNIT_1;
+    cout << TEST_UNIT_1 << endl;
+
+    TEST_UNIT_1.set_v(100);
+    TEST_UNIT_1.set_t("Cucumber");
+
+    cout << TEST_UNIT_1 << endl;
 }
 
 void test_profession()
 {
     cout << "Start" << endl;
+
+    Profession TEST_UNIT_1;
+
+    TEST_UNIT_1.set_t("Plumber");
+    TEST_UNIT_1.set_w(1500);
+
+    cout << TEST_UNIT_1 << endl;
 }
 
 void (*tests[TESTS_NUM])() = {

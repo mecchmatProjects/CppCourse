@@ -3,8 +3,11 @@
 
 using namespace std;
 
+#include <fstream>
 #include <string>
 #include <vector>
+
+#include <iostream>
 
 class Product
 {
@@ -33,6 +36,7 @@ istream &operator>>(istream &in, Product &P)
     in >> first_result >> second_result;
 
     P.set_t(first_result);
+
     P.set_v(stoi(second_result));
 
     return in;
@@ -40,7 +44,7 @@ istream &operator>>(istream &in, Product &P)
 
 ostream &operator<<(ostream &out, const Product &P)
 {
-    out << static_cast<string>("Class Product Data:\t") << P.Title << static_cast<string>("\t") << to_string(P.Value);
+    out << P.Title << endl << to_string(P.Value);
     return out;
 }
 
@@ -102,8 +106,8 @@ public:
 
     float calc_wages(unsigned);
 
-    friend istream &operator>>(istream&, Product&);
-    friend ostream &operator<<(ostream&, const Product&);
+    friend istream &operator>>(istream&, Profession&);
+    friend ostream &operator<<(ostream&, const Profession&);
 };
 
 Profession::Profession() : Title(), Cash() {}
@@ -111,6 +115,18 @@ Profession::Profession() : Title(), Cash() {}
 Profession::Profession(string s) : Title(s), Cash() {}
 
 Profession::Profession(string s, float w) : Title(s), Cash(w) {}
+
+void Profession::set_t(string s)
+{
+    this->Title = s;
+}
+
+void Profession::set_w(float w)
+{
+    this->Cash = w;
+}
+
+
 
 class Person
 {
@@ -137,7 +153,7 @@ istream &operator>>(istream &in, Person &P)
 
 ostream &operator<<(ostream &out, const Person &P)
 {
-    out << static_cast<string>("Class Person Data:\t") << P.Name;
+    out << P.Name;
     return out;
 }
 
@@ -160,6 +176,7 @@ class Employee: public Person
 protected:
     unsigned Years;
     Profession Job;
+    vector<Product> Products_in_use;
     vector<Equipment> Equipment_in_use;
 public:
     Employee();
