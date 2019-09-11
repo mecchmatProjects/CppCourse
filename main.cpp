@@ -26,7 +26,7 @@ void test_person()
     Person TEST_UNIT_3;
 
     cin >> TEST_UNIT_3;
-    cout << TEST_UNIT_3;
+    cout << TEST_UNIT_3 << endl;
 }
 
 void test_employee()
@@ -42,6 +42,16 @@ void test_manager()
 void test_product()
 {
     cout << "Start" << endl;
+
+    Product TEST_UNIT_1;
+
+    cin >> TEST_UNIT_1;
+    cout << TEST_UNIT_1 << endl;
+
+    TEST_UNIT_1.set_t("Useless Item");
+    TEST_UNIT_1.set_v(100);
+
+    cout << TEST_UNIT_1.get_t() << '\t' << TEST_UNIT_1.get_v() << endl;
 }
 
 void test_equipment()

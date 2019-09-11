@@ -28,17 +28,19 @@ public:
 
 istream &operator>>(istream &in, Product &P)
 {
-    string first_result;
-    int second_result;
-    in >> first_result;
+    string first_result, second_result;
+
+    in >> first_result >> second_result;
+
     P.set_t(first_result);
+    P.set_v(stoi(second_result));
 
     return in;
 }
 
 ostream &operator<<(ostream &out, const Product &P)
 {
-    out << static_cast<string>("Class Person Data:\t") << P.Name;
+    out << static_cast<string>("Class Product Data:\t") << P.Title << static_cast<string>("\t") << to_string(P.Value);
     return out;
 }
 
