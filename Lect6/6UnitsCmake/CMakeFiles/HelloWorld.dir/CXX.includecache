@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/vborodin/Documents/Course/6UnitsCmake/main.cpp
+iostream
+-
+source/s1.c
+/home/vborodin/Documents/Course/6UnitsCmake/source/s1.c
+
+/home/vborodin/Documents/Course/6UnitsCmake/source/s1.c
+h2.h
+/home/vborodin/Documents/Course/6UnitsCmake/source/h2.h
+h1.h
+/home/vborodin/Documents/Course/6UnitsCmake/source/h1.h
+
+Headers/h1.h
+stdio.h
+-
+
+Headers/h2.h
+

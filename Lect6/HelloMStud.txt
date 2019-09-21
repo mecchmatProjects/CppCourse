@@ -1,0 +1,10 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+int main() {
+	float x;
+	scanf("%f", &x);
+	float y = x + 1;
+	printf("y=%e", y);
+}
+

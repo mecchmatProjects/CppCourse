@@ -1,0 +1,3 @@
+/home/vborodin/Documents/Course/6UnitsCmake/CMakeFiles/rebuild_cache.dir
+/home/vborodin/Documents/Course/6UnitsCmake/CMakeFiles/HelloWorld.dir
+/home/vborodin/Documents/Course/6UnitsCmake/CMakeFiles/edit_cache.dir
