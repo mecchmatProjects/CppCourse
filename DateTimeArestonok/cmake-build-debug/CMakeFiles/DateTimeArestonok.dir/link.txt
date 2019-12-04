@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/DateTimeArestonok.dir/src/Date.cpp.o CMakeFiles/DateTimeArestonok.dir/src/Time.cpp.o CMakeFiles/DateTimeArestonok.dir/main_test.cpp.o  -o DateTimeArestonok 
