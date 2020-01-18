@@ -3,14 +3,13 @@
 
 #include <limits.h>
 
-void f1(void)
+void fun_int_consts(void)
 {
     
-//    int x = 0xE+2;   // error
-int y = 0xa+2;   // OK
-int z = 0xE +2;  // OK
-int q = (0xE)+2; // OK
-
+    //    int x = 0xE+2;   // error
+    int y = 0xa+2;   // OK
+    int z = 0xE +2;  // OK
+    int q = (0xE)+2; // OK
     
     printf("123 = %d\n", 123);
     printf("0123 = %d\n", 0123);
@@ -30,7 +29,7 @@ int q = (0xE)+2; // OK
 }
 
 
-int f2() {
+int fun_num_limits() {
 
    printf("The number of bits in a byte %d\n", CHAR_BIT);
 
@@ -53,3 +52,7 @@ int f2() {
    return(0);
 }
 
+int main(){
+   fun_int_consts();
+   fun_num_limits();
+}
