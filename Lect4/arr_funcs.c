@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
  
 /* function declaration */
 double getAverage(int arr[], int size);
@@ -20,7 +22,7 @@ int * getRandom( ) {
 }
 
 
-int main () {
+int main_arr () {
 
    /* an int array with 5 elements */
    int balance[5] = {1000, 2, 3, 17, 50};
