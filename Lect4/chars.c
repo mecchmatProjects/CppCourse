@@ -36,5 +36,5 @@ void input2 ()
     char siteName [20] = "";
     
    gets(siteName); // deprecated
-    puts(siteName);
+   puts(siteName);
 }
