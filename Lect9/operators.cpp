@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cmath>
 using namespace std;
 
 class Vector2D
@@ -45,7 +46,7 @@ public:
     }
     
     bool operator==(const Vector2D& right) {
-        return (abs(x-right.x)< eps()) && (abs(y-right.y)<eps());
+        return (fabs(x-right.x)< eps()) && (fabs(y-right.y)<eps());
     }
 
     void show() {

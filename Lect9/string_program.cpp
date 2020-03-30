@@ -255,6 +255,8 @@ int main(int argc, char **argv)
     cout<<sVar4.size()<<" "<<sVar4.length()<<endl;
 
 
+    getchar();
+
     string alphabetLC="abcdefghijklmnopqrstuvwxyz";
     string::const_iterator cii;
     int ii;
