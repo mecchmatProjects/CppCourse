@@ -1,0 +1,38 @@
+-----------Date test section--------------
+DateA: 1975.10.1 - Wednesday
+------------------------------------------
+Next day dateA: 1975.10.2
+Previous day dateA: 1975.9.30
+dateA to Time: 721628.0.0.0
+DateA + 366 days: 1976.10.1
+------------------------------------------
+DateB: 1976.10.1 - Friday
+------------------------------------------
+Next day dateB: 1976.10.2
+Previous day dateB: 1976.9.30
+dateB to Time: 721994.0.0.0
+DateB + 366 days: 1977.10.2
+------------------------------------------
+DateB > DateA
+Days between: 366
+DateA - DateB = 0.12.31
+DateA + DateB = 3954.7.4
+
+-----------Time test section--------------
+TimeA: 1.7.21.11
+------------------------------------------
+TimeA + DateA = 1976.10.2
+TimeA - DateB = 1977.10.1
+TimeA * 5 = 6.12.45.55
+TimeA / 7 = 0.4.28.44
+------------------------------------------
+TimeB: 0.8.3.52
+------------------------------------------
+TimeB + DateA = 1976.10.1
+TimeB - DateB = 1977.10.2
+TimeB * 0 = 0.0.0.0
+TimeB / 0 = Zero division error.
+------------------------------------------
+timeA > timeB
+timeA - timeB = 0.23.17.19
+timeA + timeB = 1.15.25.3
