@@ -2,12 +2,15 @@
 C++ course delivered in mech-math KNU
 
 # Lectures
-Full lectures and presentations;
-Exampples
+Full lectures and presentations, examples.
+
 
 # Projects
-C - projects :
-https://github.com/albatros78/C-Projects
 
-C++ projects:
-https://github.com/mecchmatProjects/CppCourse
+C/C++ projects:
+https://github.com/mecchmatProjects/C-Projects
+
+# C/Cpp tasks, classworks and homeworks
+
+https://github.com/mecchmatProjects/CppTasks
+
