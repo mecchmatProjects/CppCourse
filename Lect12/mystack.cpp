@@ -17,7 +17,7 @@ class Mystack {
 
          if (num+1>=N) return false;
          a[num++]=b;
-	return false;
+	return true;
     }  
 
 

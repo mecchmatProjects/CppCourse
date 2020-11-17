@@ -16,7 +16,7 @@ int main(){
  do {
    scanf("%d",&x);
    z = (MyStack*) malloc(sizeof(MyStack));
-   z->data = x;
+   z->data = x; // (*z). 
    z->ptr = p;
    p = z;
  }while(x!=0);
