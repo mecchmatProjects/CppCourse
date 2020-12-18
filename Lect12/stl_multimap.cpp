@@ -28,7 +28,7 @@ int main(){
     dict1.insert(make_pair("3", "word5")); 
     dict1.insert(make_pair("4", "word6")); 
     dict1.insert(make_pair("5", "word7")); 
-    dict1.insert(make_pair("5", "word8")); // replace old value 
+    dict1.insert(make_pair("5", "word8")); 
 
     printMap(dict1, "dict1");
   
@@ -54,5 +54,14 @@ int main(){
     cout << "dict1.lower_bound(5) : "  << "KEY = "; 
     cout << dict1.lower_bound("5")->first << " "; 
     cout << "	ELEMENT = "<< dict1.lower_bound("5")->second << endl; 
+
+    dict1.insert(make_pair("5", "word9"));
+    dict1.insert(make_pair("6", "word10"));
+    cout<<"all values with key=5:\n";
+    pair <multimap<string,string>::iterator, multimap<string,string>::iterator> eq_range;
+    eq_range = dict1.equal_range("5");
+    for (multimap<string,string>::iterator it=eq_range.first; it!=eq_range.second; ++it)
+      cout << " " << it->second;
+
 } 
 
