@@ -17,14 +17,14 @@ int main(){
     int nx,ny,nz;
     cout<<"Три довiльнi цiлi числа: ";
     cin>>nx>>ny>>nz;
-    sorting(nx,ny,nz); //створення екземпляра шаблону
+    sorting(nx,ny,nz); //створення екземпляру шаблону
     cout<<"Цi числа в порядку зростання: " <<nx<<" "<<ny<<" "<<nz<<endl;
    }
   if (k==0){
     char nx,ny,nz;
     cout<<"Три довiльнi символи: ";
     cin>>nx>>ny>>nz;
-    sorting(nx,ny,nz); //створення екземпляра шаблону
+    sorting(nx,ny,nz); //створення екземпляру шаблону
     cout<<"Цi символи в порядку зростання: "<<nx<<" "<<ny<<" "<<nz<<endl;
   }
   getchar();

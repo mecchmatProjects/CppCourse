@@ -1,9 +1,9 @@
 #include "Array.h"
-#include "Array.cpp" // мы нарушаем правила хорошего тона в программировании, но только в этом месте
+#include "Array.cpp" // It's bad - but it's only here and small criminal
  
-// Здесь вы #include другие файлы .h и .cpp с определениями шаблонов, которые вам нужны
+// Here we can #include other files *.h and *.cpp with temaplates we need
  
-template class Array<int>; // явно создаем экземпляр шаблона класса Array<int>
-template class Array<double>; // явно создаем экземпляр шаблона класса Array<double>
+template class Array<int>; // Create object of class Array<int>
+template class Array<double>; // create object of Array<double>
  
-// Здесь вы явно создаете другие экземпляры шаблонов, которые вам пітрібні
+// here we can instantiate all templaet classes we need

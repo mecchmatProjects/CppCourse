@@ -12,7 +12,7 @@ int course_project2; //  Поле 5:  Бали за другий проект �
 float additional_mark; // Поле 6: середній додатковий бал  -тип дійсне число
 } st1, st2;
 
-struct Point2D {
+typedef struct Point2D {
    int x, y;
 };
 
@@ -36,7 +36,7 @@ int main(){
   st2 = st1;
   strcpy(st2.name, "Vasya");
  
-  struct Point2D z = {1, 0};
+  Point2D z = {1, 0};
   Point3D t = {0,0,0};
 
   struct VectorND v = {.n=5};
