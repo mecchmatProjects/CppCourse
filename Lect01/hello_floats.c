@@ -57,9 +57,8 @@ int main() // main function: entry point
     
     printf("\n*******%-.1e*******%-3.3f",x1,x1);
     printf("\n%3.3f*******%03.3f*******",x1,x1);
-    
-    
-	return 0; // optional
+      
+    return 0; // optional
 }
  
  

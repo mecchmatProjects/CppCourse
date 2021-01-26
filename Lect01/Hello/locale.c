@@ -7,7 +7,7 @@
 #include <string.h>
 
 
-int main_locale1 ()
+int locale1 ()
 {
     printf ("Locale is: %s\n", setlocale(LC_ALL, NULL) );
     setlocale (LC_ALL,"");
@@ -22,7 +22,7 @@ int main_locale1 ()
 }
 
 #include <stddef.h> // wchar_t
-int main12()
+int locale2()
 {
    int   i, result;
    float fp;
@@ -82,7 +82,7 @@ int main_locale(){
 
 #define __STDC_WANT_LIB_EXT1__ 1
 
-int mainInf1(void)
+int main_locale2(void)
 {
     int i, j;
     float x, y;

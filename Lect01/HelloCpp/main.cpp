@@ -8,6 +8,7 @@ int f(){
    z = exp(x)*cos(y);
   // printf("z=%lf",z);
   std::cout<<"z="<<z;
+  return 0; 
 }
 
 
