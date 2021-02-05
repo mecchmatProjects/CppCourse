@@ -5,16 +5,14 @@
 #include <ctype.h>
 #include <string.h>
 
-int init_out1 ()
-{
-char str [16] = { 'T', 'e', 'x', 't', ' ', 'a', 'n', 'd', ' ', 's', 't', 'o', 'p', '!' };
-for (int i = 0; i <=sizeof(str); i++)
-{
-    printf("%c",str[i]);
-}
-printf("%s",str);
-printf("\n");
-return 0;
+int init_out1 (){
+	char str [16] = { 'T', 'e', 'x', 't', ' ', 'a', 'n', 'd', ' ', 's', 't', 'o', 'p', '!' };
+	for (int i = 0; i <=sizeof(str); i++){
+	    printf("%c",str[i]);
+	}
+	printf("%s",str);
+	printf("\n");
+	return 0;
 }
 
 int init_out2 ()
@@ -78,8 +76,7 @@ void input3 ()
 
 char Name[20];
 
-char* input4 ()
-{
+char* input4 (){
     char name[20];
     
     printf("Input 4:");
