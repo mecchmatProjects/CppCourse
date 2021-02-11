@@ -8,6 +8,9 @@ Full lectures and presentations, examples.
 # Projects
 
 C/C++ projects:
+https://github.com/mecchmatProjects/CppPracticum
+
+Old projects:
 https://github.com/mecchmatProjects/C-Projects
 
 # C/Cpp tasks, classworks and homeworks
