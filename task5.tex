@@ -1,0 +1,508 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian,ukrainian]{babel}
+
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\date{}
+
+
+\usepackage{enumitem}
+\makeatletter
+\newcommand{\xslalph}[1]{\expandafter\@xslalph\csname c@#1\endcsname}
+\newcommand{\@xslalph}[1]{%
+    \ifcase#1\or а\or б\or в\or г\or д\or e\or є\or ж\or з\or i%
+    \or й\or к\or л\or м\or н\or о\or п\or р\or с\or т%
+    \or у\or ф\or х\or ц\or ч\or ш\or ю\or я\or аа\or бб\or вв %
+    \else\@ctrerr\fi%
+}
+\AddEnumerateCounter{\xslalph}{\@xslalph}{m}
+\makeatother
+
+
+\begin{document}
+
+\section*{ Методичні рекомендації з курсу «Мова програмування С++» }
+
+Вступ
+
+1. Лінійні програми на Сі. Введення/виведення. Дійсний тип даних.
+
+2. Використання математичної бібліотеки С. Створення власних функцій
+
+3. Цілі типи Сі. Умовні конструкції.
+
+4. Цикли.
+
+5. Цикли. Рекурентні співвідношення. Рекурсія
+
+6. Бітові операції
+
+7. Статичні масиви. Лінійні масиви та багатовимірні масиви
+
+8. Динамічні масиви. Робота з вказівниками
+
+9. Робота з рядком, що закінчується нулем на С.
+
+10. Структури. Створення власного типу
+
+11. Робота з бінарним файлами на Сі
+
+12. Введення/виведення на С++. Робота з текстовими файлами
+
+13. Робота з класом рядок на С++.
+
+14. Створення власних класів. Інкапсуляція.
+
+15. Робота з класами. Наслідування та поліморфізм.
+
+16. Перетворення типів та робота з виключеннями.
+
+17. Створення шаблонів функцій та шаблонів класів
+
+18. Стандартна бібліотека С++. Послідовні контейнери.
+
+19. Стандартна бібліотека С++. Асоціативні контейнери.
+
+20. Стандартна бібліотека С++. Алгоритми та функтори.
+
+\subsection{ ВСТУП }
+
+Мета цього посібника, надати студенту завдання для того, щоб практично
+оволодіти потрібними навичками програмування на мовах С та С++ в рамках
+дисципліни «Мова програмування С++». Теми обиралися автором таким чином,
+щоб найбільш швидким темпом здобути навичкі для практичного
+програмування за 20 занять, тому деякі теми та розділи програмування на
+С та С++, які автор вважає занадто складним або не обовязковими з точки
+зору практики програмування, не входять до цього задачника, а винесені
+на самостійну роботу або в якості завдань на курсові проекти.
+
+Завдання посібника розділені на 20 лабораторних робіт, кожна з яких
+присвячена окремій темі, що вивчається в дисципліні. Завдання та теми
+підбиралися таким чином, щоб вивчення синтаксису мови виходило
+поступовим тому послідовне виконання лабораторних робіт є найкращим для
+засвоєння та набуття відповідних навичок. Тому наполегливо рекомендуємо
+дотримуватися послідовного виконання лабораторних робіт.
+
+Матеріал кожної лабораторної роботи посібника складається з п'яти
+блоків: контрольних запитань, завдань для аудиторної роботи та трьох
+блоків завдань для самостійної роботи. Під час підготовки до практичного
+заняття, студент повинен опрацювати блок контрольних запитань та знати
+вичерпні відповіді на них. Блок завдань для аудиторної містять перелік
+типових задач відповідної теми. Ці завдання студент має виконати
+протягом практичного заняття самостійно або під керівництвом викладача.
+Завдання для самостійної роботи студент виконує самостійно та звітує про
+їхнє виконання викладачу. Як було зазначено вище, завдання для
+самостійної роботи складається з трьох блоків, перший з яких є
+обов'язковим для виконання.
+
+Другий блок завдань є ідентичним по складності основному блоку завдань
+для самостійної роботи та призначений для кращого засвоєння матеріалу.
+
+Третій блок завдань складається з задач підвищеної складності та вимагає
+від студента не лише досконалого опанування методів поточної теми, а й
+матеріалу, що виходить за межі нормативного курсу.
+
+
+\newpage
+\subsection{ 5. Цикли. Рекурентні співвідношення. Рекурсія }
+\setcounter{subsection}{1}
+
+
+\begin{itemize}
+\item
+  Яким чином обчислити числа Фібоначчі на Сі за допомогою циклів?
+\item
+  Який загальний метод обчислення рекурентних послідовномтей для Сі?
+\item
+  Що таке рекурсія та як її застосувати для обчислення, наприклад,
+  факторіалу? Чисел Фібоначчі?
+\item
+  Що таке бінарний пошук та як його застосувати?
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Маємо дійсне число \emph{a}. Скласти програми обчислення:
+\begin{itemize}
+\item серед чисел
+\(1,1 + \frac{1}{2},1 + \frac{1}{2} + \frac{1}{3},\ldots\)першого,
+більшого за $a$;
+
+\item такого найменшого $n>0$, що
+\(1 + \frac{1}{2} + \ldots + \frac{1}{n} > a.\)
+
+\end{itemize}
+
+\item
+  Числами Фібоначчі називається числова послідовність
+  \(\left\{ F_{n} \right\}\), задана рекурентним співвідношенням другого
+  порядку
+  \(F_{0} = 0,F_{1} = 1,F_{k} = F_{k - 1} + F_{k},\ k = 2,3,\ldots\).
+
+Скласти функції:
+\begin{enumerate}[label=\xslalph*)]
+\item
+для обчислення \(F_{n}\ \)за номером члену;
+\item номера найбільшого числа Фібоначчі, яке не перевищує задане число
+$a$;
+\item номера найменшого числа Фібоначчі, яке більше заданого числа
+$a$;
+\item суми всіх чисел Фібоначчі, які не перевищують 1000.
+
+\end{enumerate}
+
+\item
+  Введіть натуральне число n. Далі утворить рекурентну послідовність
+  \(a_{i}\)за наступним правилом: \(a_{0} = n\). Якщо \(a_{k}\) парне,
+  то \(a_{k}\), якщо --- непарне, то\(a_{k + 1} = 4a_{k} + 1\). Доведіть
+  що для n\textless{}1000 ця послідовність буду містити член рівний
+  одиниці. Знайдіть серед цих n число, якому потрібно максимальна
+  кількість кроків для досягнення одиниці.
+\item
+  Скласти програми для обчислення добутків:
+\begin{enumerate}[label=\xslalph*)]
+\item \(P_{n} = \prod_{i = 1}^{n}\left( 2 + \frac{1}{i!} \right);\) 
+\item
+\(P_{n} = \prod_{i = 1}^{n}\left( \frac{i + 1}{i + 2} \right);\)
+\item
+\(P_{n} = \prod_{i = 1}^{n}\frac{1}{(i + 1)!};\); г)
+\(P_{n} = \prod_{i = 1}^{n}\frac{1}{i^{i} + 1}.\)
+\end{enumerate}
+
+\emph{\emph{Вказівка}}. Добуток \emph{P\textsubscript{n}} обчислити за
+допомогою рекурентного співвідношення
+\(P_{0} = 1,P_{k} = P_{k - 1}*a_{k},k = 1,2,\ldots,n,\)($k=1,2,\ldots,n$)
+де \(a_{k}\)- $k$-тий множник.
+
+\item
+  Скласти програми для обчислення найменшого додатного члена числових
+  послідовності, які задаються рекурентними співвідношеннями, та його
+  номера:
+\(x_{n} = x_{n - 1} + x_{n - 3} + 100, x_{1} = x_{2} = x_{3} = - 99, n = 3,4,\ldots;\)
+
+\item
+  Скласти програми для обчислення ланцюгових дробів
+\begin{enumerate}[label=\xslalph*)]
+\item \(b_{n} = b + \frac{1}{b + \frac{1}{b + \ddots + \frac{1}{b}};}\); 
+\item
+\(\lambda_{n} = 2 + \frac{1}{6 + \frac{1}{10 + \ddots + \frac{1}{4n + 2}};}\)
+\item
+\(x_{2n} = 1 + \frac{1}{2 + \frac{1}{1 + \frac{1}{2 + \frac{1}{1 + \ddots + \frac{1}{2}}}.};}\)
+\end{enumerate}
+\emph{\emph{Вказівка}}. Використати рекурентні співвідношення
+
+а)
+\(b_{0} = b,b_{k} = b + \frac{1}{b_{k - 1}}, \; k = 1,2,\ldots,n\);
+
+б)
+\(b_{0} = 4n + 2,b_{k} = 4(n - k) + 2 + \frac{1}{b_{k - 1}},\; k = 1,2,\ldots,n\).
+
+\item
+  Скласти програми для обчислення суми:
+\end{enumerate}
+
+\(S_{n} = \sum_{k = 1}^{n}\frac{2^{k}}{a_{k} + b_{k}},\) ,
+
+де \(\left\{ \begin{matrix}
+ a_{1} = 0,a_{2} = 1, \\
+ a_{k} = \frac{a_{k - 1}}{k} + a_{k - 2}b_{k}, \\
+\end{matrix} \right.\ \) \(\left\{ \begin{matrix}
+ b_{1} = 1,b_{2} = 0, \\
+ b_{k} = b_{k - 1} + a_{k - 1}, \\
+\end{matrix} \right.\ \) \(k = 3,4,\ldots;\)
+
+
+
+\emph{Самостійна}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{7}
+\item
+  Скласти програми обчислення довільного елемента послідовностей,
+  заданих рекурентними співвідношеннями
+\begin{enumerate}[label=\xslalph*)]
+\item
+\(v_{0} = 1,v_{1} = 0.3, v_{i} = (i + 2)v_{i - 2}, i = 2,3,\ldots\)
+
+\item
+\(v_{0} = v_{1} = v_{2} = 1, \; v_{i} = (i + 4)(v_{i - 1} - 1) + (i + 5)v_{i - 3},\; i = 3,4,\ldots\)
+
+\item
+\(v_{0} = v_{1} = 0,\ v_{2} = \frac{3}{2}\;v_{i} = \frac{i - 2}{(i - 3)^{2} + 1}v_{i - 1} - v_{i - 2}v_{i - 3} + 1,\; i = 2,3,\ldots\)
+
+\end{enumerate}
+
+\item
+  Скласти програму обчислення довільного елемента послідовності
+  \(v_{n}\), визначеної системою співвідношень
+
+\[v_{0} = v_{1} = 1,v_{i} = \frac{u_{i - 1} - v_{i - 1}}{\left| u_{i - 2} + v_{i - 1} \right| + 2},i = 2,3,\ldots;\]
+
+де
+\(u_{0} = u_{1} = 0,u_{i} = \frac{u_{i - 1} - u_{i - 2}v_{i - 1} - v_{i - 2}}{1 + u_{i - 1}^{2} + v_{i - 1}^{2}},i = 2,3,\ldots;\)
+
+
+\item
+  Скласти програми для обчислення сум:
+\begin{enumerate}[label=\xslalph*)]
+\item
+\(S_{n} = \sum_{k = 1}^{n}{2^{k}a_{k}},\textup{дe \ }a_{1} = 0,a_{2} = 1,a_{k} = a_{k - 1} + k*a_{k - 2},\ k = 3,4,\ldots;\)
+\item
+\(S_{n} = \sum_{k = 1}^{n}\frac{3^{k}}{a_{k}},\textup{дe \ } a_{1} = a_{2} = 1,\ a_{k} = \frac{a_{k - 1}}{k} + a_{k - 2},\; k = 3,4,\ldots;\)
+
+\item
+\(S_{n} = \sum_{k = 1}^{n}\frac{k!}{a_{k}},\textup{дe \ } a_{1} = a_{2} = 1,\ a_{k} = a_{k - 1} + \frac{a_{k - 1}}{2^{k}},\; k = 3,4,\ldots;\)
+
+\item
+\(S_{n} = \sum_{k = 1}^{n}{k!a_{k}},\textup{дe \ } a_{1} = 0,a_{2} = 1,\ a_{k} = a_{k - 1} + \frac{a_{k - 2}}{(k - 1)!},\; k = 3,4,\ldots;\)
+\item
+\(S_{n} = \sum_{k = 1}^{n}\frac{a_{k}}{2^{k}},\textup{дe \ } a_{1} = a_{2} = a_{3} = 1,\ a_{k} = a_{k - 1} + a_{k - 3},\; k = 4,5,\ldots;\)
+\item
+\(S_{n} = \sum_{k = 1}^{n}{\frac{2^{k}}{k!}a_{k}},\textup{дe \ } a_{0} = 1,a_{k} = ka_{k - 1} + \frac{1}{k},\; k = 1,2,\ldots.\)
+
+\end{enumerate}
+
+\item
+  Скласти програми для обчислення сум:
+\begin{enumerate}[label=\xslalph*)]
+\item \(S_{n} = \sum_{k = 1}^{n}\frac{3^{2k + 1}}{a_{k}*b_{k} + 1},\) ,
+
+де \(\left\{ \begin{matrix}
+ a_{1} = 2,a_{2} = 1, \\
+ a_{k} = \frac{a_{k}}{k + 1} + a_{k - 2} + b_{k}, \\
+\end{matrix} \right.\ \) \(\left\{ \begin{matrix}
+ b_{1} = 1,b_{2} = 0, \\
+ b_{k} = 2b_{k - 1} + a_{k - 1}, \\
+\end{matrix} \right.\ \) \(k = 3,4,\ldots;\)
+
+\item \(S_{n} = \sum_{k = 1}^{n}\frac{a_{k}b_{k}}{(k + 1)!},\)
+
+де \(\left\{ \begin{matrix}
+ a_{1} = u, \\
+ a_{k} = 2b_{k - 1} + a_{k - 1}, \\
+\end{matrix} \right.\ \) \(\left\{ \begin{matrix}
+ b_{1} = v, \\
+ b_{k} = 2a_{k = 1}^{2} + b_{k - 1}, \\
+\end{matrix} \right.\ \) \(k = 2,3,\ldots;\)
+
+\emph{u,v} -- задані дійсні числа;
+\item
+\(\ S_{n} = \sum_{k = 1}^{n}\frac{2^{k}}{{(1 + a}_{k} + b_{k}){k!}^{}}\)
+
+де \(\left\{ \begin{matrix}
+ a_{1} = 1, \\
+ a_{k} = 3b_{k - 1} + 2a_{k - 1}, \\
+\end{matrix} \right.\ \) \(\left\{ \begin{matrix}
+ b_{1} = 1, \\
+& b_{k} = 2a_{k - 1} + b_{k - 1}, \\
+\end{matrix} \right.\ \) \(k = 2,3,\ldots;\)
+\item \(S_{n} = \sum_{k = 1}^{n}\left( \frac{a_{k}}{b_{k}} \right)^{k},\)
+
+де \(\left\{ \begin{matrix}
+ a_{0} = 1,a_{1} = 2, \\
+ a_{k} = b_{k - 2} + \frac{b_{k}}{2}, \\
+\end{matrix} \right.\ \) \(\left\{ \begin{matrix}
+ a_{0} = 5,b_{1} = 5, \\
+ b_{k} = b_{k - 2}^{2} - a_{k - 1}, \\
+\end{matrix} \right.\ \) \(k = 2,3,\ldots;\)
+\item \(S_{n} = \sum_{k = 1}^{n}\frac{a_{k}}{1 + b_{k}},\)
+
+де \(\left\{ \begin{matrix}
+ a_{0} = 1, \\
+ a_{k} = b_{k - 1}a_{k - 1}, \\
+\end{matrix} \right.\ \) \(\left\{ \begin{matrix}
+ b_{0} = 1, \\
+ b_{k} = b_{k - 1} + a_{k - 1}, \\
+\end{matrix} \right.\ \) \(k = 1,2,\ldots.\)\emph{.}
+
+\end{enumerate}
+
+\item
+  Скласти програми для обчислення добутків
+\begin{enumerate}[label=\xslalph*)]
+\item \(P_{n} = \prod_{k = 0}^{n}{\frac{a_{k}}{3^{k}},}\) де
+\(\left\{ \begin{matrix}
+ a_{0} = a_{1} = 1,\ a_{2} = 3, \\
+ a_{k} = a_{k - 3} + \frac{a_{k - 2}}{2^{k - 1}}, \\
+\end{matrix} \right.\ \), \(k = 3,4,\ldots;\)
+
+\item \(P_{n} = \prod_{k = 1}^{n}{a_{k}b_{k},}\)
+
+де \(\left\{ \begin{matrix}
+ a_{1} = 1, \\
+ a_{k} = \left( \sqrt{b_{k - 1}} + a_{k - 1} \right)/5, \\
+\end{matrix} \right.\ \) \(\left\{ \begin{matrix}
+ b_{1} = 1, \\
+ b_{k} = 2b_{k - 1} + 5a_{k - 1}^{2}, \\
+\end{matrix} \right.\ \) \(k = 2,3,\ldots\)\emph{.}
+
+\end{enumerate}
+
+\item
+  Реалізувати функцію яка з`ясовує, чи входить задана цифра до запису
+  заданого натурального числа.
+\item
+  Реалізувати функцію "обернення" (запису в оберненому порядку цифр)
+  заданого натурального числа.
+
+\emph{\emph{Вказівка. Для побудови числа використати рекурентне
+співвідношення}} \(y_{0} = 0,y_{i} = y_{i - 1}*10 + a_{i},\)\emph{де}
+\(a_{i}\) \emph{- наступна цифра числа} \(n\)\emph{при розгляді цифр
+справа наліво.}
+
+\item
+  Скласти програми наближеного обчислення суми всіх доданків, абсолютна
+  величина яких не менше $\varepsilon > 0 $:
+\begin{enumerate}[label=\xslalph*)]
+\item \(y = \sin x = x - \frac{x^{3}}{3!} + \frac{x^{5}}{5!} - \ldots\);
+\item \(y = \cos x = 1 - \frac{x^{2}}{2!} + \frac{x^{4}}{4!} - \ldots\);
+\item
+\(y = \sinh (x) = x + \frac{x^{3}}{3!} + \frac{x^{5}}{5!} + \ldots\);
+\item 
+\(y = \cosh (x) = 1 + \frac{x^{2}}{2!} + \frac{x^{4}}{4!} + \ldots\);
+\item \(y = e^{x} = 1 + \frac{x}{1!} + \frac{x^{2}}{2!} + \ldots\);
+\item
+\(y = \ln(1 + x) = x - \frac{x^{2}}{2!} + \frac{x^{3}}{3!} - \ldots,(\left| x \right| < 1)\);
+\item
+\(y = \frac{1}{1 + x} = 1 - x + x^{2} - x^{3} + \ldots,(\left| x \right| < 1)\);
+\item
+\(y = \ln\frac{1 + x}{1 - x} = 2*\frac{x}{1} + \frac{x^{3}}{3} + \frac{x^{5}}{5} + \ldots, (\left| x \right| < 1)\);
+\item
+\(y = \frac{1}{(1 + x)^{2}} = 1 - 2*x + 3*x^{2} - \ldots,(\left| x \right| < 1)\);
+\item
+\(y = \frac{1}{(1 + x)^{3}} = 1 - \frac{2*3}{2}x + \frac{3*4}{2}x^{2} - \frac{4*5}{2}x^{3} + \ldots,(\left| x \right| < 1)\);
+\item
+\(y = \frac{1}{1 + x^{2}} = 1 - x^{2} + x^{4} - x^{6} + \ldots,(\left| x \right| < 1)\);
+\item
+\(y = \sqrt{1 + x} = 1 + \frac{1}{2}x - \frac{1}{2*4}x^{2} + \frac{1*3}{2*4*6}x^{3} - \ldots,(\left| x \right| < 1)\);
+\item
+\(y = \frac{1}{\sqrt{1 + x}} = 1 - \frac{1}{2}x + \frac{1*3}{2*4}x^{2} - \frac{1*3*5}{2*4*6}x^{3} - \ldots,(\left| x \right| < 1)\);
+\item
+\(y = \arcsin (x) = x + \frac{1}{2}\frac{x^{3}}{3!} + \frac{1*3}{2*4}\frac{x^{5}}{5!} + \ldots,(\left| x \right| < 1)\).
+
+\end{enumerate}
+
+\emph{\emph{Вказівка}}. Суму $y$ обчислювати за допомогою
+рекурентного співвідношення
+\(S_{0} = 0,\ S_{k} = S_{k - 1} + a_{k},\ k = 1,2,\ldots,\) де
+\(a_{k} - k\)-тий доданок, для обчислення якого також складається
+рекурентне співвідношення. В якості умови повторення циклу розглядається
+умова \(\left| a_{k} \right| \geq \varepsilon.\)
+
+\item
+  Ввести дійсні числа
+  \(x,\varepsilon\ (x \neq 0,\varepsilon > 0)\)\emph{.} Обчислити з
+  точністю \(\varepsilon\) нескінченну суму і вказати кількість
+  врахованих доданків.
+\begin{enumerate}[label=\xslalph*)]
+\item \(\sum_{k = 0}^{\infty}\frac{x^{2k}}{2k!};\) 
+\item \(\sum_{k = 0}^{\infty}\frac{( - 1)^{k}x^{k}}{(k + 1)^{2}};\)
+\item \(\sum_{k = 0}^{\infty}\frac{x^{2k}}{2^{k}k!};\) г)
+\(\sum_{k = 0}^{\infty}\frac{( - 1)^{k}x^{2k + 1}}{k!(2k + 1)!}.\)
+\end{enumerate}
+
+\end{enumerate}
+
+Додаткові задачі:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{16}
+\item
+  Дано натуральне число $k$ . Скласти програму одержання $k$-тої цифри послідовності
+\begin{enumerate}[label=\xslalph*)]
+\item 110100100010000 ... , в якій виписані підряд степені 10;
+\item 123456789101112 ... , в якій виписані підряд всі натуральні числа;
+\item 149162536 ... , в якій виписані підряд квадрати всіх натуральних
+чисел;
+\item 01123581321 ... , в якій виписані підряд всі числа Фібоначчі.
+
+\end{enumerate}
+
+\item
+  Скласти програму знаходження кореня рівняння \(tgx = x\) на відрізку
+  {[}0,001;1,5{]} із заданою точністю \(\varepsilon\), використовуючи
+  метод ділення відрізку навпіл.
+\item
+  Знайти корінь рівняння \(x^{3} + 4x^{2} + x - 6 = 0,\) який міститься
+  на відрізку {[}0,2{]}, з заданою точністю \(\varepsilon\).
+
+\emph{\emph{Вказівка.}} Одним з методів розв`язування рівняння є метод
+хорд, який полягає в обчисленні елементів послідовності 
+
+\(u_{0} = a / n, \;  u_{n} = u_{n-1} - \frac{y(u_{n-1}) (u_{n-1} -u_{0})}{y(u_{n-1}) -y(u_{0})} \) 
+
+до виконання умови \(\left| u_{n} - u_{n - 1} \right| < \varepsilon\). В
+умовах нашої задачі \(a = 0,b = 2,\ y(x) = x^{3} + 4x^{2} + x - 6.\)
+
+\item
+  а)Скласти програму, яка визначає потрібний спосіб розміну будь-якої
+  суми грошей до 99 коп. за допомогою монет вартістю 1, 2, 5, 10, 25, 50
+  коп.
+
+  б) Розв'яжить цю задачу для будь-якого натурального числа $m$
+($1 <m<100000$) копійок так щоб кількість монет при
+цьому була найменша.
+\end{enumerate}
+
+\end{document}
+

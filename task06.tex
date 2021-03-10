@@ -1,0 +1,209 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian,ukrainian]{babel}
+
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\date{}
+
+
+\usepackage{enumitem}
+\makeatletter
+\newcommand{\xslalph}[1]{\expandafter\@xslalph\csname c@#1\endcsname}
+\newcommand{\@xslalph}[1]{%
+    \ifcase#1\or а\or б\or в\or г\or д\or e\or є\or ж\or з\or i%
+    \or й\or к\or л\or м\or н\or о\or п\or р\or с\or т%
+    \or у\or ф\or х\or ц\or ч\or ш\or ю\or я\or аа\or бб\or вв%
+    \else\@ctrerr\fi%
+}
+\AddEnumerateCounter{\xslalph}{\@xslalph}{m}
+\makeatother
+
+
+\begin{document}
+
+
+\newpage
+\subsection{ 6. Бітові операції }
+\setcounter{subsection}{1}
+
+
+\begin{itemize}
+\item
+  Що таке та які бітові операції існують? Який пріоритет цих операцій?
+\item
+  Чому дорівнюють наступні вирази:
+  3 \textless{} \textless{} 2, 5 \textgreater{} \textgreater{} 2, 5 \& 3, n \& 1, n | 1, n\textasciicircum n, \textasciitilde{}0.
+\item
+  Як знайти значення самого лівого біту? Самого правого? Третього зліва?
+  Як встановити 5-й байт зліва в 1? В нуль?
+\item
+  Для яких типів Сі краще не застосовувати бітові операції?
+\item
+  Який нюанс для першого біту є при використанні бітових операцій для
+  цілого типу С/С++?
+\end{itemize}
+
+Аудиторні задачі
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Ввести натуральне 8-бітове число $n$ і вивести $2^{n}$, використовуючи бітові операції.
+\item
+  Ввести ціле число $n$ та натуральне $k$ і вивести ціле число, яке у якого
+  $k$-й біт встановлений в 1, а всі інші біти збігаються з бітами числа $n$
+  на тих же позиціях. Наприклад, якщо введені 9 і 1, відповіддю буде 11.
+\item
+  Вести натуральне довге число $M$. Встановіть її біт
+  з номером $j$ рівним нулеві та виведіть отримане число в десятковому та
+  шістнадцятковому вигляді.
+\item
+  Поміняйте місцями перші 8 біт та останні 8 біт натурального числа,
+  виведіть отримане число в десятковому та шістнадцятковому вигляді.
+\item
+  Підрахуйте найбільшу кількість одиничок серед бітів даного числа, що
+  йдуть підряд.
+\item
+  Описати словами результат наступного виразу: x \& (x-1).
+\item
+  Описати словами результат наступного виразу: x \& (-x).
+\item
+  Напишіть функцію що визначає до якої архітектури (big, high, little
+  endian) належить даний комп'ютер.
+\end{enumerate}
+
+Самостійна
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Ввести натуральне(32-бітне) число $M$. Встановіть її $j$-тий рівним нулеві
+  та виведіть отримане число виведіть отримане число в десятковому та
+  шістнадцятковому вигляді.
+\item
+  Визначить номер першого значущого зліва та зправа біта натурального
+  числа $M$.
+\item
+  Поміняйте місцями перші 8 біт та останні 8 біт натурального числа
+  (розмір в бітах якого вважаємо невідомим до вводу) та виведіть
+  отримане число в десятковому та шістнадцятковому вигляді.
+\item
+  Ввести натуральне 64-бітне число $M$. Встановіть її ліві $n$ біт рівним
+  нулеві та виведіть отримане число. Встановіть її праві $n$ біт рівним
+  нулеві та виведіть отримане число в десятковому та вісімковому
+  вигляді. Розвяжить задачу для типу $M$ unsigned та long long unsigned.
+\item
+  Ввести натуральне число $M$. Поміняйте місцями біти її двійкового запису
+  з номерами $i$ та $j$ (що теж вводяться) та виведіть отримане число в
+  десятковому та шістнадцятковому вигляді.
+\item
+  Знайдіть кількість значущих (не рівних 0) бітів натурального
+  32-бітного числа.
+\item
+  За допомогою лище бітових операцій та операції декременту зясуйте чи є
+  дане натуральне число ступінню двійки. Спробуйте з циклом та без
+  циклу. (Підказка: подумайте, як виглядає бітове представлення
+  декременту ступеню двійки, та використайте далі конюнкцію).
+\item
+  Ввести натуральні 32-бітні числа $M$ та $N$ та визначить скільки в них
+  спільних одиничок бітового представлення. Визначить скільки в цих
+  числах взагалі співпадає бітів.
+\item
+  Виведіть бітове (двійкове) представлення натурального числа.
+\item
+  Інвертуйте (тобто прочитайте зліва направо) бітове представлення
+  даного числа та виведіть двійкове представлення та десяткове для цієї
+  інверсії.
+\item
+  Ввести ціле число n (однобайтове) і вивести число, отримане в
+  результаті циклічного зсуву числа n на один розряд вліво, тобто
+  старший біт зсунитий в позицію молодшого, а всі інші біти зсуваються
+  на один розряд вліво. Наприклад, якщо введено 130, відповіддю буде 5.
+\item
+  Визначити, скільки разів зустрічається 11 в двійковому поданні цілого
+  додатнього числа (в двійковому поданні 11110111 воно зустрічається 5
+  разів).
+\item
+  Викреслити $i$-й біт з двійкового представлення натурального числа
+  (молодші $i$ бітів залишаються на місці, старші зсуваються на один
+  розряд вправо). Наприклад, якщо введені 11 і 2, відповіддю буде 7.
+\item
+  Написати функцію, результатом якого є дане значення $x$, у якого молодший нульовий біт та найстарший
+  біт встановлені в 1.
+\item
+  Написати функцію, результатом якого є дане значення $x$, у якого все
+  біти встановлені в 1, крім молодших $n$ бітів.
+\item
+  Підрахуйте кількість нулів серед бітів даного числа.
+\item
+  Знайдіть номер найстаршого значущого біта в даному 32-бітному числі.
+\item
+  Напишіть функцію, що визначає чи два натуральних числа не мають
+  одиничних бітів на однакових позиціях.
+\item
+  Напишіть функцію, що визначає чи два натуральних числа не мають
+  нульових бітів на однакових позиціях.
+\item
+  Напишіть функцію, що визначає чи два натуральних числа не мають
+  однакових бітів на однакових позиціях.
+\end{enumerate}
+
+
+\end{document}

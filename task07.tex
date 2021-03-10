@@ -1,0 +1,295 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian,ukrainian]{babel}
+
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\date{}
+
+
+\usepackage{enumitem}
+\makeatletter
+\newcommand{\xslalph}[1]{\expandafter\@xslalph\csname c@#1\endcsname}
+\newcommand{\@xslalph}[1]{%
+    \ifcase#1\or а\or б\or в\or г\or д\or e\or є\or ж\or з\or i%
+    \or й\or к\or л\or м\or н\or о\or п\or р\or с\or т%
+    \or у\or ф\or х\or ц\or ч\or ш\or ю\or я\or аа\or бб\or вв%
+    \else\@ctrerr\fi%
+}
+\AddEnumerateCounter{\xslalph}{\@xslalph}{m}
+\makeatother
+
+
+\begin{document}
+
+
+\newpage
+\subsection{ 7. Статичні масиви. Лінійні масиви }
+\setcounter{subsection}{1}
+
+
+\begin{itemize}
+\item
+  Які варіанти декларації масивів на Сі. На Сі++?
+\item
+  Які варіанти ініціалізації масивів на Сі. На Сі++?
+\item
+  Створення багатовимірного масиву. Введіть розміри та вміст двовимірної
+  дійсної матриці. Виведіть її красиво рідок за рядком.
+\item
+  Як найкраще передавати масив у аргументи функції?
+\item
+  Чи можна повернути масив фіксованого розміру як результат функції?
+\item
+  Чому масив як аргумент краще передавати через вказівник чи посилання?
+\item
+  Як повернути коректно дані з масиву з функції?
+\end{itemize}
+
+Задачі для аудиторної роботи
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Ініціалізуйте масив 5 цілих чисел в програмі довільним чином. Введіть
+  дійсне число та знайдіть кількість чисел у вашому масиві, що менше зі
+  це число.
+
+\item
+  Масив заповнений таким чином: 5, 112, 4, 3. Вивести його елементи
+  навпаки (3,4,112,5). При цьому використання циклу є обов'язковим.
+\item
+  Заповнити масив типу double з 10 елементів з клавіатури (по черзі в
+  циклі вводяться всі елементи) і знайти суму всіх елементів більших за
+  число Ейлера \(e\).
+\item
+  Масив типу int з 5 елементів заповнюється з клавіатури. Знайти і
+  вивести на екран максимальне значення у вашому масиві.
+\item
+  Знайти суму всіх парних і непарних елементів масиву натуральних чисел.
+  Масив заповнюється з клавіатури, 5 елементів.
+\item
+Написати функції, що
+\begin{itemize}
+\item вводить n-вимірний вектор дійсних чисел;
+\item виводить n-вимірний вектор дійсних чисел;
+\item рахує суму двох векторів (результат : аргумент функції --- масив);
+\item рахує скалярний добуток двох векторів.
+ \end{itemize}
+Протестувати роботи цих функцій: ввести в головній програмі розмірність
+векторів, 2 вектори цієї розмірності та підрахувати їх суму та скалярний
+добуток і вивести результати.
+\end{enumerate}
+
+Задачі для самостійної роботи
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{6}
+\item
+  Написати функцію, що вводить послідовність ненульових цілих чисел,
+  введення завершується при вводі нуля. Кількість елементів масиву
+  обмежена числом 20. Визначити кількість добуток та середнє гармонічне
+  цієї послідовності.
+\item
+  Вводиться масив натуральних чисел заданого розміру N:
+\begin{enumerate}[label=\xslalph*)]
+\item визначити скільки серед цих чисел повних квадратів простих чисел;
+\item визначити скільки серед цих чисел парних повних кубів;
+\item визначити скільки серед цих чисел n-тих ступенів цілих чисел (для
+всіх n\textgreater{}1);
+\item визначити скільки серед них цілих ступенів двійки;
+\item визначити скільки серед них ступенів чисел, що кратні 3;
+\item визначити скільки серед них простих чисел;
+\item визначити скільки серед них чисел Фібоначчі;
+\item визначити скільки серед них чисел, у яких 5-й, 6-й та 8-й біт
+двійкового запису дорівнюють 1;
+\item визначити скільки серед них чисел, які містять рівно 5 біт в
+двійковому записі, що дорівнюють 1;
+\item визначити скільки серед них чисел, у яких сума цифр в десятковому
+запису ділиться на 7.
+ \end{enumerate}
+
+\item Задані натуральне число \(n\)\emph{,} дійсні числа
+\(a_{1},a_{2},\ldots,a_{n}.\)Скласти програму для знаходження:
+\begin{enumerate}[label=\xslalph*)]
+\item
+ \(\max\left( a_{1},a_{2},\ldots,a_{n} \right)\); 
+\item
+\(\min\left( a_{1},a_{2},\ldots,a_{n} \right)\);
+\item \(\max\left( a_{2},a_{4},\ldots \right)\); 
+\item
+\(\min\left( a_{1},a_{3},\ldots \right)\);
+\item
+\(\min\left( a_{2},a_{4},\ldots \right) + \max\left( a_{1},a_{3},\ldots \right)\);
+\item
+\(\max\left( \left| a_{1} \right|,\ldots,\left| a_{n} \right| \right)\);
+\item \(\max\left( -a_{1},a_{2}, -a_{3}\ldots,(-1)^{n}a_{n} \right)\);
+\item
+\(\left( \min\left( a_{1},\ldots,a_{n} \right) \right)^{2} - \min\left( a_{1}^{2},\ldots,a_{n}^{2} \right)\).
+
+\end{enumerate}
+
+\item Дано натуральне число n, цілі числа \(a_{1},a_{2},\ldots,a_{n}\).
+Скласти програму знаходження
+
+а) \(min(a_{1},2a_{2},\ldots,na_{n})\);
+
+б) \(min(a_{1} + a_{2},\ldots,a_{n - 1} + a_{n})\);
+
+в) \(max(a_{1},a_{1}a_{2},\ldots,a_{1}a_{2}\ldots a_{n})\);
+\item кількості парних серед \(a_{1^2},a_{2^2},\ldots,a_{k^2},\; k=[\sqrt{n}] \);
+\item кількості повних квадратів серед\(a_{1}a_{n},a_{1}a_{n-1},\ldots,a_{k}a_{n-k},\; k=[n/2]\);
+\item кількості квадратів непарних чисел серед
+\(a_{1},a_{2},\ldots,a_{n}\).
+
+12) Скласти функції для обчислення
+
+а) Значення многочлена Чебишова заданого степеню \(n\)в точці \(x\)
+
+\(T_{0}(x) = 1,T_{1}(x) = x,\)
+
+\(T_{n}(x) = 2xT_{n - 1}(x) - T_{n - 2}(x),n = 2,3,\ldots;\)
+
+та функцію, що виводить коефіцієнти поліному ступеня n\textless{}256.
+
+б) многочлена Ерміта заданого степеню \(n\)в точці \(x\)
+
+\(H_{0}(x) = 1,H_{1}(x) = 2x,\)
+
+\(H_{n}(x) = 2xH_{n - 1}(x) - 2(n - 1)H_{n - 2}(x),n = 2,3,\ldots\)
+
+та функцію, що виводить коефіцієнти поліному ступеня n\textless{}256.
+
+\item
+  В цілочисельному масиві A{[}N{]} знайдіть моду, тобто елемент, що
+  зустрчається найбільшу кількість разів. Якщо таких елементів декілька
+  виведіть всі такі елементи.
+
+\item
+  В цілочисельному масиві A{[}N{]} знайдіть елемент, що є найближчим до
+  середнього арифметичного найбільшого та найменшого елементу масиву.
+\item
+  Напишіть функцію, яка в дійсному масиві A{[}N{]} знаходить середнє
+  відхилення (варіацію) масиву
+\item
+  Знайдіть в даному цілому числі цифру десяткового запису, яка
+  зустрічається найбільшу кількість разів. Якщо їх декілька, виведіть
+  найбільшу цифру.
+\item
+  Напишіть функцію, яка за заданим масивом значень
+  \({\{ x_{i}\}}_{i = 1}^{d}\) обчислює:
+
+  $$ f(x) = \sum\limits_{i=1}^{d} (100x_{i+1} -x_{i})^{2} + (x_{i}-1)^2. $$  
+
+\item
+  Біля прилавка в магазині вишикувалася черга з n покупців. Час
+  обслуговування продавцем t-го покупця \(t_{i}\) ($i = 1, \ldots,n$). Нехай
+  дано натуральне n і дійсні \({\{ t_{i}\}}_{i = 1..n}\) . Отримати
+  \({\{ c_{i}\}}_{i = 1..n},\)де \(c_{i}\)- час перебування i-го покупця
+  в черзі ($i = 1..n$). Вказати номер покупця, для обслуговування якого
+  продавцеві потрібно найменше часу.
+\item
+  В деяких видах спортивних змагань виступ кожного спортсмена незалежно
+  оцінюється деякими суддями, потім з усієї сукупності оцінок
+  видаляються найбільш висока і найнижча, а для решти оцінок
+  обчислюється середнє арифметичне, яке і йде в залік спортсмену. Якщо
+  найбільш високу оцінку виставило декілька суддів, то з сукупності
+  оцінок видаляється лише одна така оцінка; аналогічно надходять з
+  найбільш низькими оцінками. Дано натуральне число n, дійсні числа
+  \(a_{1},a_{2},\cdots,a_{n}\). Вважаючи, що
+  \(a_{1},a_{2},\cdots,a_{n}\)оцінки, виставлені суддями одному з
+  учасників змагань, визначити оцінку, яка піде в залік цього
+  спортсмену.
+\end{enumerate}
+
+Додаткові задачі:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{12}
+\item
+По заданим значенням коефіцієнтів поліномів $P(x)$ та $Q(x)$ знайдіть
+значення коефіцієнтів поліному $P(Q(x))$.
+\item
+  Обчислити коефіцієнти багаточлена з заданими дійсними коренями 
+$ x{[}0{]},x{[}1{]}, \ldots{}, x{[}n{]}$. Кількість коефіцієнтів обмежена
+  числом 100.
+\item
+  Побудувати N-розрядний код Грея. Кодом Грея зветься така послідовність
+  дворозрядних двійкових чисел, в яких кожні два сусідних а також перше
+  й останнє числа відрізняються лише одним розрядом. Так, для N=2 код
+  Грея наступний: 00,01,11,10. Для N=3: 000,001,011,010,110,111,101.
+  Переведіть всі числа з цього двійкового коду до десяткової системи
+  числення.
+\item
+  В цілочисельному масиві A{[}N{]} (не обов'язково впорядкованому)
+  знайдіть медіану, тобто величину, що ділить ряд навпіл: по обидві
+  сторони від неї знаходиться однакова кількість одиниць сукупності.
+  Тобто, якщо кількість чисел непарна, обирається елемент, що є середнім
+  за зростанням. Наприклад, для впорядкованого набору чисел 1, 3, 3, 6,
+  7, 8, 9 медіаною є четверте із них, число 6. Якщо кількість елементів
+  парна, тоді медіану зазвичай визначають як середнє значення між двома
+  числами по середині впорядкованого масиву Наприклад, для наступного
+  набору 1, 2, 3, 4, 5, 6, 8, 9 - медіана є середнім значенням для двох
+  чисел по середині: вона дорівнюватиме (4 + 5)/2=4.5.
+\end{enumerate}
+
+
+\end{document}

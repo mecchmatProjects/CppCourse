@@ -1,0 +1,258 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian,ukrainian]{babel}
+
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\date{}
+
+
+\usepackage{enumitem}
+\makeatletter
+\newcommand{\xslalph}[1]{\expandafter\@xslalph\csname c@#1\endcsname}
+\newcommand{\@xslalph}[1]{%
+    \ifcase#1\or а\or б\or в\or г\or д\or e\or є\or ж\or з\or i%
+    \or й\or к\or л\or м\or н\or о\or п\or р\or с\or т%
+    \or у\or ф\or х\or ц\or ч\or ш\or ю\or я\or аа\or бб\or вв%
+    \else\@ctrerr\fi%
+}
+\AddEnumerateCounter{\xslalph}{\@xslalph}{m}
+\makeatother
+
+
+\begin{document}
+
+
+\newpage
+\subsection{3.2. Динамічні масиви. Робота з вказівниками }
+\setcounter{subsection}{1}
+
+
+\begin{itemize}
+\item
+  Як можна створити лінійний динамічний масив та коректно завершити при
+  цьому програму?
+\item
+  Що таке вказівники? Які операції визначені на вказівниках? Як
+  проітеруватись по даному масиву за допомогою вказівника?
+\item
+  Як визначити динамічну матрицю за допомогою масиву вказівників та
+  коректно її обробити?
+\item
+  Які функції та з якої бібліотеки використовуються на Сі для виділення
+  памяті? В чому їх різниця? Що відбудеться якщо потрібної памяті не
+  було ними виділено?
+\item
+  Які функції існують для очищення пам'яті? Що відбудеться, якщо їх не
+  використовувати? Які ще проблеми виникають при некоректному очищенні
+  чи його відсутності?
+\end{itemize}
+
+Задачі для аудіторної роботи
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Ввести натуральне число n. Створити масив з n дійсних чисел та
+  підрахувати суму квадратів елементів цього масиву. Підрахувати
+  кількість ступенів двійки та трійки в цьому масиві.
+
+\item
+  Написати функцію, що вводить масив цілих чисел доки не введеться нуль
+  через змінний аргумент та кількість елементів масиву повертається як
+  результат роботи функції. Кількість елементів обмежена числом 100.
+  Підрахувати кількість повних квадратів та кубів в цьому масиві.
+\item
+  Створити функцію, що вводить n-вимірний вектор, виділяючи відповідну
+  пам'ять та функцію, що відповідно очищує пам'ять. Напишіть програму,
+  що вводить два вектори, підраховує та створює як окремий масив їх
+  векторний добуток, якщо це можливо, та в будь-якому варіанті коректно
+  завершує програму без витоків пам'яті.
+\item
+  Створити функцію, що вводить дійсну квадратну n-вимірну матрицю (n
+  задається як аргумент функції), виділяючи відповідну пам'ять та
+  функцію, що відповідно очищує пам'ять. Напишіть програму, що вводить
+  дві матриці, підраховує та обчислює як окремий масив їх добуток, якщо
+  це можливо, та в будь-якому варіанті коректно завершує програму без
+  витоків пам'яті.
+\end{enumerate}
+
+Задачі для самостійної роботи
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{4}
+\item
+  Створити функцію, що вводить матрицю цілих чисел довільних
+  розмірностей, виділяючи відповідну пам'ять (розміри масивів) та
+  функцію, що відповідно очищує пам'ять. Напишіть функцію, що підраховує
+  ранг матриці. Коректно протестуйте роботу цих функцій.
+\item
+  Створити функцію, що вводить матриці довільних розмірностей, виділяючи
+  відповідну пам'ять та функцію, що відповідно очищує пам'ять. Напишіть
+  програму, що вводить масив таких матриць, підраховує та створює як
+  окремий масив добуток всього масиву матриць, якщо це можливо, та в
+  будь-якому варіанті коректно завершує програму без витоків пам'яті.
+\item
+  Вирішіть завдання виконуючи наступні вимоги:
+\end{enumerate}
+Сформувати динамічний двовимірний масив, заповнити його випадковими
+числами і вивести на екран.
+
+\begin{enumerate}[label=\xslalph*)]
+\item
+  Додати рядок із заданим номером.
+\item
+  Додати стовпець із заданим номером.
+\item
+  Додати рядок в кінець матриці.
+\item
+  Додати стовпець в кінець матриці.
+\item
+  Додати рядок в початок матриці.
+\item
+  Додати стовпець в початок матриці.
+\item
+  Додати К рядків в кінець матриці.
+\item
+  Додати К стовпців в кінець матриці.
+\item
+  Додати К рядків в початок матриці.
+\item
+  Додати К стовпців в початок матриці.
+\item
+  Видалити рядок з номером К.
+\item
+  Видалити стовпець з номером К.
+\item
+  Видалити рядки, починаючи з рядка К1 і до рядка К2.
+\item
+  Видалити стовпці, починаючи з стовпця К1 і до стовпчика К2.
+\item
+  Видалити всі парні рядки.
+\item
+  Видалити всі парні стовпці.
+\item
+  Видалити всі рядки, в яких є хоча б один нульовий елемент.
+\item
+  Видалити всі стовпці, в яких є хоча б один нульовий елемент.
+\item
+  Видалити рядок, в якій знаходиться найбільший елемент матриці.
+\item
+  Додати рядки після кожної парної рядки матриці.
+\item
+  Додати стовпці після кожного парного стовпця матриці.
+\item
+  Додати К рядків, починаючи з рядка з номером N.
+\item
+  Додати К стовпців, починаючи зі стовпчика з номером N.
+\item
+  Додати рядок після рядка, що містить найбільший елемент.
+\item
+  Додати стовпець після стовпця, що містить найбільший елемент.
+\item
+  Додати рядок після рядка, що містить найменший елемент.
+\item
+  Додати стовпець після стовпця, що містить найменший елемент.
+\item
+  Видалити рядок і стовпець, на перетині яких знаходиться найбільший
+  елемент масиву.
+
+\end{enumerate}
+
+Додаткові задачі
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{7}
+\item
+  Користувачу надається можливість декілька разів вводити розмірність
+  вектору дійсних чисел та самі ці значення. Після кожного вводу
+  потрібно підрахувати середнє арифметичне та дисперсію всіх введених
+  значень.
+\item
+  Петя та Вася кожен день на протязі N днів вимірюють
+  декілька (від 0 до 1000) разів температуру повітря (хоча інколи хтось
+  може забути це зробити). Створіть програму, що дозволить їм ввести ці
+  результати за кожен день спостережень та підрахує середню температуру
+  кожного з цих днів, де сумарна кількість вимірювань була більше 1.
+  Програма повинна передбачити, що після вводу цих N днів вони можуть
+  захотіти ввести наступні M днів таки спостережень. Передбачте
+  можливість коректного завершення при нестачі ресурсів комп'ютера для
+  зберігання та обробки даних.
+\item
+ В масиві натуральних чисел A{[}N{]} всі числа є меншими 16. Напишить
+  функцію, що зберігає дані цього масиву у масиві N/2 чисел типу
+  uint8\_t (тобто в кожному числі uint8\_t зберігається два числа масиву
+  A{[}i{]}).
+\item
+  В масиві натуральних чисел A{[}N{]} всі числа є меншими 64. Напишить
+  функцію, що зберігає дані цього масиву у масиві {[}N*4/3{]} чисел типу
+  uint8\_t (тобто в кожних трьох числах uint8\_t зберігається чотири
+  числа масиву A{[}i{]}).
+\item
+  В масиві натуральних чисел A{[}N{]} всі числа є меншими \(2^{k}\).
+  Знайдіть це число k та напишить функцію, що зберігає цей масив в N*k
+  біт найбільш економічним чином( int A{[}3{]}, k=5 → uint8 B{[}2{]}
+  ,тобто використовує 16 біт, або int A{[}8{]}, k=14 → uint16 B{[}7{]} ,
+  тобто використовує 112 біт) та функцію що обратно повертає числа з
+  масиву B у масив A.
+\end{enumerate}
+
+\end{document}
