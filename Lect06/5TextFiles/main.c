@@ -5,6 +5,7 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <string.h> 
+#include <ctype.h>
   
 // struct person with 3 fields 
 typedef struct Student { 
@@ -26,27 +27,45 @@ int createTextFile(const char* fname){
    
     FILE* f = fopen(fname, "wt");
     if(f==NULL) return EXIT_FAILURE;
-    
-    for(;;){
-        printf("input id or 0\n");
+    int k=0;
+
+
         int id;
         int age;
         char name[10];
-        //scanf("%d", &id);
-        //scanf("%d",&age);
-        //scanf("%s",name);
         char str[20];
+        char c;
+        int input_done = 0;
+    do{
+        
+        printf("Input student %d: id  age name:\n",k);
         fflush(stdin);
-        fgets(str, 20, stdin);
-        sscanf(str, " %d %d %s", &id, &age, name); //VERY dangerous
-        if(id==0) break;
-        fprintf(f,"%d %c %s\n", id, (char)age, name);
-    }
+        //fgets(str, 20, stdin);
+        //fflush(stdin);
+        
+        input_done = scanf("%d %d %s", &id,&age, name);
+        
+        //scanf("%s",name);
+        //sscanf(str, "%d %d %s", &id, &age, name); //VERY dangerous
+        //fflush(stdin);
+        if(input_done==3){
+           printf("Student %d: %d %d %s\n",k,id,age,name);
+           fprintf(f,"%d %c %s\n", id, (char)age, name);
+        }
+        else{
+           fprintf(stderr,"Error in input: cycle breaks\n");     
+           fflush(stdin);
+        }
+        printf("Do You want to enter another student?y/n\n");
+        scanf("\n%c",&c);
+        
+        k++;  
+    }while(tolower(c)=='y' || isspace(c));
     fclose(f);
     return EXIT_SUCCESS;
 }
-  
-  
+
+
 int readTextFile(const char* fname, Student* mas){
 
     int id;
@@ -78,7 +97,8 @@ int readTextFile(const char* fname, Student* mas){
 int main(int argc, char **argv)
 {
     const char fname[] = "studs.txt";
-	createTextFile(fname);
+
+    createTextFile(fname);
     Student studs[10];
     int k = readTextFile(fname, studs);
     if (k<0) return EXIT_FAILURE;
