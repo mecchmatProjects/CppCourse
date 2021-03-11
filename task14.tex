@@ -1,0 +1,236 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian,ukrainian]{babel}
+
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\date{}
+
+
+\usepackage{enumitem}
+\makeatletter
+\newcommand{\xslalph}[1]{\expandafter\@xslalph\csname c@#1\endcsname}
+\newcommand{\@xslalph}[1]{%
+    \ifcase#1\or а\or б\or в\or г\or д\or e\or є\or ж\or з\or i%
+    \or й\or к\or л\or м\or н\or о\or п\or р\or с\or т%
+    \or у\or ф\or х\or ц\or ч\or ш\or ю\or я\or аа\or бб\or вв%
+    \else\@ctrerr\fi%
+}
+\AddEnumerateCounter{\xslalph}{\@xslalph}{m}
+\makeatother
+
+
+\begin{document}
+
+
+\newpage
+\subsection{13. Робота з класом рядок на С++.}
+\setcounter{subsection}{1}
+
+
+\begin{itemize}
+
+\item
+  Які конструктори для класу рядок? Які копі-конструкторів? Скільки та
+  які оператори є перевантаженими для класу рядок?
+\item
+  Як видалити підрядок використовуючи методи класу String?
+\item
+  Як можна проітеруватись по рядку Сі++?
+\item
+  Як узнати довжину рядка?
+\item
+  Як знайти перше входження даного підрядку в рядку? Останнє?
+\item
+  Як вивести всі слова в реченні, що розділено пробілами? Комами?
+\end{itemize}
+
+Задачі для аудиторної роботи
+
+В даній групі задач потрібно реалізувати функції та в тих функціях де
+потрібно виводити рядок зробіть 2 варіанти: 1) Результат записати в
+новий рядок. 2) Результат замінює рядок, що є аргументом функції.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Даний рядок, що складається з символів латинського алфавіту,
+  розділених пробілами (одним або декількома). Визначити кількість слів,
+  які починаються і закінчуються однією і тією ж літерою.
+\item
+  Даний рядок, що складається з символів латинського алфавіту,
+  розділених пробілами (одним або декількома). Перетворити кожне слово в
+  рядку, видаливши з нього всі входження останньої літери цього самого
+  слова (кількість пропусків між словами не змінювати).
+\item
+  Даний рядок із символів латинського алфавіту. Перевірте правильність
+  розстановки тега \textless{}td\textgreater{}: кожному відкритого тегу
+  повинен відповідати закритий \textless{}/ td\textgreater{}.
+\item
+  Даний рядок -- речення з символів латинського алфавіту. Вивести
+  найкоротше слово в реченні. Якщо таких слів декілька, то: 
+  а) вивести перше з них; б) останнє з них в) всі такі слова.
+\item
+  У реченні, що складається зі слів, відокремлених одним пропуском,
+  замінити першу букву у слів, що настають за словами die, der, das, на
+  прописну.
+\item
+  Напишіть функцію часткового спліттінгу рядку, тобто функцію, що
+  приймає рядок та повертає перше слово з рядку (роздільник -- задається
+  як аргумент функції)
+\item
+  Напишіть функцію, що приймає рядок та повертає масив (як
+  аргумент-змінний) всі дійсні числа, що містяться в рядку (роздільник
+  -- задається як аргумент функції)
+\item
+  У записці слова зашифровані - кожне з них записано навпаки.
+  Розшифрувати повідомлення
+\end{enumerate}
+
+Задачі для самостійної роботи
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{8}
+\item
+  Даний рядок, що складається з символів латинського алфавіту,
+  розділених пробілами (одним або декількома). Вивести рядок, що містить
+  ці ж слова, але розділені одним символом ',' (кома). В кінці
+  поставити крапку.
+\item
+  Даний рядок, що складається з символів латинського алфавіту,
+  розділених пробілами (одним або декількома). Перетворити кожне слово в
+  рядку, видаливши з нього всі входження останньої літери цього слова
+  (кількість пропусків між словами не змінювати).
+\item
+  Речення складається з слів, розділених одним або декількома
+  пропусками або комами. Написати програму, що друкує все слова, що закінчуються на
+  заданий символ.
+\item
+  Даний рядок, що складається з символів латинського алфавіту,
+  розділених пробілами (одним або декількома). Перетворити кожне слово в
+  рядку видаливши з нього всі входження заданого символу (кількість
+  пропусків між словами не змінювати).
+\item
+  Даний рядок-речення з символів латинського алфавіту. Перетворити рядок
+  так, щоб кожне слово починалося з великої літери.
+\item
+  Даний рядок-речення з символів латинського алфавіту. Вивести найдовше
+  слово в реченні (якщо таких слів кілька, то вивести останнє з них).
+\item
+  Визначити, скільки разів в рядку зустрічається задане слово.
+\item
+  У записці слова зашифровані -- кожне з них записано навпаки. Розшифрувати повідомлення.
+\item
+  Даний рядок, що складається з символів латинського алфавіту,
+  розділених пробілами (одним або декількома). Визначити кількість слів,
+  які містять введений символ.
+\item
+  Речення складається з слів, розділених одним або декількома
+  пропусками. Написати програму, що друкує все слова, що закінчуються на
+  введений символ.
+\item
+  У англійському реченні слова розділені одним пропуском. У всіх словах,
+  наступних за артиклями a, an та the, першу букву замінити на прописну.
+  Написати програму, що виконує цю роботу.
+\item
+  Написати програму, що визначає, який відсоток слів в англійському
+  тексті містить подвоєну приголосну.
+\item
+  У мові використовується латинський алфавіт, причастя завжди
+  закінчується суфіксом "ings". Задана рядок слів, в якій слова
+  відокремлюються одним або декількома пропусками. Надрукувати причастя
+  з цього рядку.
+\item
+  Даний рядок з малих символів латинського алфавіту. Замініть кожен
+  символ на наступний за ним за алфавітом, символ 'z' замініть на 'a'.
+\item
+  Даний рядок із символів латинського алфавіту. Замініть всі входження
+  рядків ``one'', "two","three",\ldots{},''nine'' на символи `1',
+  '2','3',\ldots{},'9'.
+\item
+  Відредагувати задане речення, видаляючи з нього ті слова, які
+  зустрічаються в реченні задану кількість разів.
+\item
+  Визначте, який відсоток символи кожного слова складають з символів
+  даного речення.
+\item
+  Дан текст, що складається з символів латинського алфавіту, пробілів і
+  знаків пунктуації. Знайдіть найпоширенішу голосну букву (без
+  урахування регістру).
+
+\end{enumerate}
+
+Додаткові задачі:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{27}
+\item
+  Даний рядок в якому зустрічаються слова, які складаються з восьми
+  цифрових символів. Переведіть всі їх в формат дати "dd-mm-yyyy" і
+  перевірте коректність такої дати.
+\item
+  В текстовому файлі записані в кожному рядку значення поліномів за
+  допомогою знаків +, -, *, **(ступінь) та цифр і літери $x$. Введіть
+  значення $x$ з консолі та для всіх коректних записів поліномів обчисліть
+  їх значення для даного $x$ та виведіть в новий текстовий файл.
+\end{enumerate}
+
+\end{document}
