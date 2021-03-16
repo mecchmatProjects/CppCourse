@@ -177,19 +177,21 @@
   Що таке бінарний пошук та як його застосувати?
 \end{itemize}
 
+Аудиторні задачі
+
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
 \item
-  Маємо дійсне число \emph{a}. Скласти програми обчислення:
-\begin{itemize}
+  Маємо дійсне число $a$. Скласти програми обчислення:
+\begin{enumerate}[label=\xslalph*)]
 \item серед чисел
-\(1,1 + \frac{1}{2},1 + \frac{1}{2} + \frac{1}{3},\ldots\)першого,
-більшого за $a$;
+\(1,1 + \frac{1}{2},1 + \frac{1}{2} + \frac{1}{3},\ldots\) першого,
+більшого за задане число $a$;
 
 \item такого найменшого $n>0$, що
 \(1 + \frac{1}{2} + \ldots + \frac{1}{n} > a.\)
 
-\end{itemize}
+\end{enumerate}
 
 \item
   Числами Фібоначчі називається числова послідовність
@@ -210,26 +212,27 @@ $a$;
 \end{enumerate}
 
 \item
-  Введіть натуральне число n. Далі утворить рекурентну послідовність
-  \(a_{i}\)за наступним правилом: \(a_{0} = n\). Якщо \(a_{k}\) парне,
-  то \(a_{k}\), якщо --- непарне, то\(a_{k + 1} = 4a_{k} + 1\). Доведіть
-  що для n\textless{}1000 ця послідовність буду містити член рівний
-  одиниці. Знайдіть серед цих n число, якому потрібно максимальна
+  Введіть натуральне число $n$. Далі утворить рекурентну послідовність
+  \(\{a_{i}\}\) за наступним правилом: \(a_{0} = n\). Якщо \(a_{k}\) парне,
+  то \(a_{k}\), якщо $a_k$ -- непарне, то\(a_{k + 1} = 4a_{k} + 1\). Доведіть
+  що для $n<1000$ ця послідовність буде збігатись до
+  одиниці. Знайдіть серед цих $n$ число, якому потрібно максимальна
   кількість кроків для досягнення одиниці.
 \item
   Скласти програми для обчислення добутків:
 \begin{enumerate}[label=\xslalph*)]
-\item \(P_{n} = \prod_{i = 1}^{n}\left( 2 + \frac{1}{i!} \right);\) 
+\item \(P_{n} = \prod\limits_{i = 1}^{n}\left( 2 + \frac{1}{i!} \right);\) 
 \item
-\(P_{n} = \prod_{i = 1}^{n}\left( \frac{i + 1}{i + 2} \right);\)
+\(P_{n} = \prod\limits_{i = 1}^{n}\left( \frac{i + 1}{i + 2} \right);\)
 \item
-\(P_{n} = \prod_{i = 1}^{n}\frac{1}{(i + 1)!};\); г)
-\(P_{n} = \prod_{i = 1}^{n}\frac{1}{i^{i} + 1}.\)
+\(P_{n} = \prod\limits_{i = 1}^{n}\frac{1}{(i + 1)!};\); 
+\item
+\(P_{n} = \prod\limits_{i = 1}^{n}\frac{1}{i^{i} + 1}.\)
 \end{enumerate}
 
-\emph{\emph{Вказівка}}. Добуток \emph{P\textsubscript{n}} обчислити за
+\emph{\emph{Вказівка}}. Добуток $P_{n}$ обчислити за
 допомогою рекурентного співвідношення
-\(P_{0} = 1,P_{k} = P_{k - 1}*a_{k},k = 1,2,\ldots,n,\)($k=1,2,\ldots,n$)
+\(P_{0} = 1,P_{k} = P_{k - 1}*a_{k},\ k = 1,2,\ldots,n,\)($k=1,2,\ldots,n$)
 де \(a_{k}\)- $k$-тий множник.
 
 \item
@@ -259,7 +262,7 @@ $a$;
   Скласти програми для обчислення суми:
 \end{enumerate}
 
-\(S_{n} = \sum_{k = 1}^{n}\frac{2^{k}}{a_{k} + b_{k}},\) ,
+\(S_{n} = \sum\limits_{k = 1}^{n}\frac{2^{k}}{a_{k} + b_{k}},\) ,
 
 де \(\left\{ \begin{matrix}
  a_{1} = 0,a_{2} = 1, \\
@@ -305,26 +308,26 @@ $a$;
   Скласти програми для обчислення сум:
 \begin{enumerate}[label=\xslalph*)]
 \item
-\(S_{n} = \sum_{k = 1}^{n}{2^{k}a_{k}},\textup{дe \ }a_{1} = 0,a_{2} = 1,a_{k} = a_{k - 1} + k*a_{k - 2},\ k = 3,4,\ldots;\)
+\(S_{n} = \sum\limits_{k = 1}^{n}{2^{k}a_{k}},\textup{дe \ }a_{1} = 0,a_{2} = 1,a_{k} = a_{k - 1} + k*a_{k - 2},\ k = 3,4,\ldots;\)
 \item
-\(S_{n} = \sum_{k = 1}^{n}\frac{3^{k}}{a_{k}},\textup{дe \ } a_{1} = a_{2} = 1,\ a_{k} = \frac{a_{k - 1}}{k} + a_{k - 2},\; k = 3,4,\ldots;\)
+\(S_{n} = \sum\limits_{k = 1}^{n}\frac{3^{k}}{a_{k}},\textup{дe \ } a_{1} = a_{2} = 1,\ a_{k} = \frac{a_{k - 1}}{k} + a_{k - 2},\; k = 3,4,\ldots;\)
 
 \item
-\(S_{n} = \sum_{k = 1}^{n}\frac{k!}{a_{k}},\textup{дe \ } a_{1} = a_{2} = 1,\ a_{k} = a_{k - 1} + \frac{a_{k - 1}}{2^{k}},\; k = 3,4,\ldots;\)
+\(S_{n} = \sum\limits_{k = 1}^{n}\frac{k!}{a_{k}},\textup{дe \ } a_{1} = a_{2} = 1,\ a_{k} = a_{k - 1} + \frac{a_{k - 1}}{2^{k}},\; k = 3,4,\ldots;\)
 
 \item
-\(S_{n} = \sum_{k = 1}^{n}{k!a_{k}},\textup{дe \ } a_{1} = 0,a_{2} = 1,\ a_{k} = a_{k - 1} + \frac{a_{k - 2}}{(k - 1)!},\; k = 3,4,\ldots;\)
+\(S_{n} = \sum\limits_{k = 1}^{n}{k!a_{k}},\textup{дe \ } a_{1} = 0,a_{2} = 1,\ a_{k} = a_{k - 1} + \frac{a_{k - 2}}{(k - 1)!},\; k = 3,4,\ldots;\)
 \item
-\(S_{n} = \sum_{k = 1}^{n}\frac{a_{k}}{2^{k}},\textup{дe \ } a_{1} = a_{2} = a_{3} = 1,\ a_{k} = a_{k - 1} + a_{k - 3},\; k = 4,5,\ldots;\)
+\(S_{n} = \sum\limits_{k = 1}^{n}\frac{a_{k}}{2^{k}},\textup{дe \ } a_{1} = a_{2} = a_{3} = 1,\ a_{k} = a_{k - 1} + a_{k - 3},\; k = 4,5,\ldots;\)
 \item
-\(S_{n} = \sum_{k = 1}^{n}{\frac{2^{k}}{k!}a_{k}},\textup{дe \ } a_{0} = 1,a_{k} = ka_{k - 1} + \frac{1}{k},\; k = 1,2,\ldots.\)
+\(S_{n} = \sum\limits_{k = 1}^{n}{\frac{2^{k}}{k!}a_{k}},\textup{дe \ } a_{0} = 1,a_{k} = ka_{k - 1} + \frac{1}{k},\; k = 1,2,\ldots.\)
 
 \end{enumerate}
 
 \item
   Скласти програми для обчислення сум:
 \begin{enumerate}[label=\xslalph*)]
-\item \(S_{n} = \sum_{k = 1}^{n}\frac{3^{2k + 1}}{a_{k}*b_{k} + 1},\) ,
+\item \(S_{n} = \sum\limits_{k = 1}^{n}\frac{3^{2k + 1}}{a_{k}*b_{k} + 1},\) ,
 
 де \(\left\{ \begin{matrix}
  a_{1} = 2,a_{2} = 1, \\
@@ -334,7 +337,7 @@ $a$;
  b_{k} = 2b_{k - 1} + a_{k - 1}, \\
 \end{matrix} \right.\ \) \(k = 3,4,\ldots;\)
 
-\item \(S_{n} = \sum_{k = 1}^{n}\frac{a_{k}b_{k}}{(k + 1)!},\)
+\item \(S_{n} = \sum\limits_{k = 1}^{n}\frac{a_{k}b_{k}}{(k + 1)!},\)
 
 де \(\left\{ \begin{matrix}
  a_{1} = u, \\
@@ -344,9 +347,9 @@ $a$;
  b_{k} = 2a_{k = 1}^{2} + b_{k - 1}, \\
 \end{matrix} \right.\ \) \(k = 2,3,\ldots;\)
 
-\emph{u,v} -- задані дійсні числа;
+$u,v$ -- задані дійсні числа;
 \item
-\(\ S_{n} = \sum_{k = 1}^{n}\frac{2^{k}}{{(1 + a}_{k} + b_{k}){k!}^{}}\)
+\(\ S_{n} = \sum\limits_{k = 1}^{n}\frac{2^{k}}{{(1 + a}_{k} + b_{k}){k!}^{}}\)
 
 де \(\left\{ \begin{matrix}
  a_{1} = 1, \\
@@ -355,7 +358,7 @@ $a$;
  b_{1} = 1, \\
 & b_{k} = 2a_{k - 1} + b_{k - 1}, \\
 \end{matrix} \right.\ \) \(k = 2,3,\ldots;\)
-\item \(S_{n} = \sum_{k = 1}^{n}\left( \frac{a_{k}}{b_{k}} \right)^{k},\)
+\item \(S_{n} = \sum\limits_{k = 1}^{n}\left( \frac{a_{k}}{b_{k}} \right)^{k},\)
 
 де \(\left\{ \begin{matrix}
  a_{0} = 1,a_{1} = 2, \\
@@ -364,7 +367,7 @@ $a$;
  a_{0} = 5,b_{1} = 5, \\
  b_{k} = b_{k - 2}^{2} - a_{k - 1}, \\
 \end{matrix} \right.\ \) \(k = 2,3,\ldots;\)
-\item \(S_{n} = \sum_{k = 1}^{n}\frac{a_{k}}{1 + b_{k}},\)
+\item \(S_{n} = \sum\limits_{k = 1}^{n}\frac{a_{k}}{1 + b_{k}},\)
 
 де \(\left\{ \begin{matrix}
  a_{0} = 1, \\
@@ -379,13 +382,13 @@ $a$;
 \item
   Скласти програми для обчислення добутків
 \begin{enumerate}[label=\xslalph*)]
-\item \(P_{n} = \prod_{k = 0}^{n}{\frac{a_{k}}{3^{k}},}\) де
+\item \(P_{n} = \prod\limits_{k = 0}^{n}{\frac{a_{k}}{3^{k}},}\) де
 \(\left\{ \begin{matrix}
  a_{0} = a_{1} = 1,\ a_{2} = 3, \\
  a_{k} = a_{k - 3} + \frac{a_{k - 2}}{2^{k - 1}}, \\
 \end{matrix} \right.\ \), \(k = 3,4,\ldots;\)
 
-\item \(P_{n} = \prod_{k = 1}^{n}{a_{k}b_{k},}\)
+\item \(P_{n} = \prod\limits_{k = 1}^{n}{a_{k}b_{k},}\)
 
 де \(\left\{ \begin{matrix}
  a_{1} = 1, \\
@@ -454,10 +457,10 @@ $a$;
   точністю \(\varepsilon\) нескінченну суму і вказати кількість
   врахованих доданків.
 \begin{enumerate}[label=\xslalph*)]
-\item \(\sum_{k = 0}^{\infty}\frac{x^{2k}}{2k!};\) 
-\item \(\sum_{k = 0}^{\infty}\frac{( - 1)^{k}x^{k}}{(k + 1)^{2}};\)
-\item \(\sum_{k = 0}^{\infty}\frac{x^{2k}}{2^{k}k!};\) г)
-\(\sum_{k = 0}^{\infty}\frac{( - 1)^{k}x^{2k + 1}}{k!(2k + 1)!}.\)
+\item \(\sum\limits_{k = 0}^{\infty}\frac{x^{2k}}{2k!};\) 
+\item \(\sum\limits_{k = 0}^{\infty}\frac{( - 1)^{k}x^{k}}{(k + 1)^{2}};\)
+\item \(\sum\limits_{k = 0}^{\infty}\frac{x^{2k}}{2^{k}k!};\) 
+\item \(\sum\limits_{k = 0}^{\infty}\frac{( - 1)^{k}x^{2k + 1}}{k!(2k + 1)!}.\)
 \end{enumerate}
 
 \end{enumerate}
