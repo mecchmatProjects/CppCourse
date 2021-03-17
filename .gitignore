@@ -26,6 +26,12 @@
 *.a
 *.lib
 
+# Comlied latex
+*.out
+*.aux
+*.log
+
+
 # Executables
 *.exe
 *.out
