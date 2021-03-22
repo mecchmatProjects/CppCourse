@@ -82,6 +82,7 @@
 %\setlength{\multicolsep}{0.3\baselineskip}
 
 \renewcommand{\rmdefault}{cmss}
+\usepackage[utf8]{inputenc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Titlepage for tutorials published by KYIV UNIVERSITY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -92,10 +93,10 @@
   \let\footnotesize\small
   \let\footnoterule\relax
   \let \footnote \thanks
- %  \null
- %\vfil
+%\null
+%\vfil
   \begin{center}
-    {\large КИЇВСЬКИЙ НАЦІОНАЛЬНИЙ УНІВЕРСИТЕТ\\ імені ТАРАСА ШЕВЧЕНКА}
+    {\large РљРР‡Р’РЎР¬РљРР™ РќРђР¦Р†РћРќРђР›Р¬РќРР™ РЈРќР†Р’Р•Р РЎРРўР•Рў\\ С–РјРµРЅС– РўРђР РђРЎРђ РЁР•Р’Р§Р•РќРљРђ}
   \end{center}
   \vskip 70\p@
   \begin{center}%
@@ -113,8 +114,8 @@
   \@thanks
   \vfill\null
   \begin{center}{\large
-   Видавничо-полiграфiчний центр\\
-   "Київський унiверситет"\\
+   xxxxx\\
+   "zzzz"\\
   \@date}
   \end{center}
   \vfil\null\eject
@@ -189,20 +190,20 @@
 %%%% SECOND PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\reviewers#1#2{\vskip 4em%
-Рецензенти\vskip 1em
+Р РµС†РµРЅР·РµРЅС‚Рё\vskip 1em
 #1\par
 #2}
-\def\total#1{\ #1 с.}
+\def\total#1{\ #1 Г±.}
 \def\prot#1{
-\rightline{\vbox{\rightline{Затверджено Вченою Радою}
-\rightline{механiко--математичного факультету}
+\rightline{\vbox{\rightline{РҐРҐРҐРҐРҐРҐРҐРҐРҐ}
+\rightline{СѓСѓСѓСѓСѓСѓСѓСѓСѓСѓСѓСѓСѓСѓСѓСѓСѓСѓСѓСѓ}
 \rightline{#1}}}}
 
 \newcommand\headofsecondpage{%
 \thispagestyle{empty}
 \noindent\@title /
     \@author
--- К.: ВПЦ "Київський унiверситет",
+-- Рљ.: РљРќРЈ "РљРёС—РІСЃСЊРєРёР№ СѓРЅС–РІРµСЂСЃРёС‚РµС‚",
 \@date. --}
 \def\secondpage#1#2#3#4{%
 \headofsecondpage
@@ -214,9 +215,9 @@
 
 
 
-\def\ltask#1{ #1 } %ГМС с. 53
+\def\ltask#1{ #1 } %ГѓГЊГ‘ Г±. 53
 
 
-\newcommand{\loadansfile}{\@starttoc{ans}} %ГМС, с. 55
+\newcommand{\loadansfile}{\@starttoc{ans}} %ГѓГЊГ‘, Г±. 55
 \makeatother
 \endinput
