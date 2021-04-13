@@ -13,7 +13,6 @@ public:
   Ratio(T x1, T y1):x(x1),y(y1){};
 
   Ratio add(const Ratio& a){
-
     return Ratio(a.x*y+a.y*x, a.y*y);
   }
 
@@ -22,7 +21,7 @@ public:
     return output;
   }
 
-} ;
+};
 
 
 int main(){
@@ -31,7 +30,7 @@ int main(){
  Ratio<int> r2(1,3);
 
  Ratio<int> z;
-  z = r1.add(r2);
+ z = r1.add(r2);
 
  cout<<z;
 }

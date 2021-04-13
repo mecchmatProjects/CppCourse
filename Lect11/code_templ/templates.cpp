@@ -1,5 +1,5 @@
 #include "Array.h"
-#include "Array.cpp" // It's bad - but it's only here and small criminal
+#include "Array.cpp" // It's bad - but it's only here and it is small crime
  
 // Here we can #include other files *.h and *.cpp with temaplates we need
  

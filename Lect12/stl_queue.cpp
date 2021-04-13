@@ -38,6 +38,7 @@ void showpq(const priority_queue <pair<int,int> > & gq) {
 
 
 int main() {
+    // simple Queue
    queue <int> q1; 
    q1.push(10);
    q1.push(20);
@@ -52,26 +53,27 @@ int main() {
    q1.pop();
    showq(q1);
 
+   // priority Queue
    priority_queue <int> q2;
    q2.push(10);
    q2.push(30);
    q2.push(20); 
    q2.push(5);
    q2.push(1);
-   cout << "The priority queue q2 is : ";
+   cout << "\nThe priority queue q2 is : ";
    showpq(q2);
    cout << "\nq2.size() : " << q2.size();
    cout << "\nq2.top() : " << q2.top();
    cout << "\nq2.pop() : ";
    q2.pop(); 
    showpq(q2);
-
-   priority_queue <pair<int,int> > q3;/* коректно до c++20 – інакше для pair не визначено оператор < */
+   // priority Queue 2
+   priority_queue <pair<int,int> > q3;/* коректно до c++20 – інакше потрібен <=> */
    q3.push(make_pair(1,2));
    q3.push(pair<int,int>(3,4));
    q3.push(make_pair(1,4));
    q3.push(make_pair(2,10));
-   cout << "The priority queue q3 is : ";
+   cout << "\nThe priority queue q3 is : ";
    showpq(q3);
 }
 
