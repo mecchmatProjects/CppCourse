@@ -12,6 +12,7 @@ virtual void dummy() {}
 	cout<<"Base"<<'\n';
   }
  };
+
 class Derived: public Base { int a;
 
 public:

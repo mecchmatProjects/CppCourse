@@ -25,10 +25,10 @@ cout << "Typeid of i is ";
 cout << typeid(i).name() << endl;
 // демонстрация typeid с полиморфными типами
 p = &baseob;
-cout << "p is pointing to an object of type ";
+cout << "p is pointing to an object of type "; // Base
 cout << typeid(*p).name()<<" and "<<boolalpha<< typeid(*p).before(typeid(baseob)) << endl;
 p = &ob1;
-cout << "p is pointing to an object of type ";
+cout << "p is pointing to an object of type "<<typeid(*p).name(); // Dderived 1
 cout << boolalpha << (typeid(*p)== typeid(Derived1)) <<" and "<< typeid(*p).before(typeid(baseob))<< endl;
 p = &ob2;
 cout << "p is pointing to an object of type ";
