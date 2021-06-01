@@ -1,0 +1,6 @@
+Person      Product     Profession
+    |           |
+Employee    Equipment
+    |           
+Manager     
+
