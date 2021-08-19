@@ -3,19 +3,17 @@ C++ course delivered in mech-math KNU
 
 # Lectures
 Full lectures and presentations, examples.
-
+Pt 1 manual:
+LectC.pdf
 
 # Projects
-
-C/C++ projects:
-https://github.com/mecchmatProjects/CppPracticum
 
 Old projects:
 https://github.com/mecchmatProjects/C-Projects
 
 # C/Cpp tasks, classworks and homeworks
 
-https://github.com/mecchmatProjects/CppPracticum
+methodicCPP.pdf
 
 
 # Програма курсу
