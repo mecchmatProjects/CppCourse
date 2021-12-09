@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1559166787 source:d:\cpp\1bank_goryslavets\src\bank.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"Bank.h"
+
+1559166801 d:\cpp\1bank_goryslavets\src\bank.h
+	<vector>
+
