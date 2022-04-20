@@ -1,0 +1,33 @@
+#include "pch.h"
+#include <iostream>
+using namespace std;
+int main()
+{
+    char str[100];
+    cin.get(str, 100);
+    int b, kolvo=0;
+    for (int j = 0; str[j] != '\n'; j++)
+    {
+        str[j] = b;
+        if (b == ' ')
+            kolvo++; //Подсчет количества слов
+    }
+    for (int i = 0; i < kolvo; i++) // ????
+    {
+        if (str[i]=' ')
+        {
+            //????
+        }
+        int ch = 0; // перевод в десятичную из ASCII
+        for (int g = 0; g < strlen(str); g++)
+        {
+            ch = ch * 10 + (int(str[g]) - int('0'));
+        }
+        if (ch % 4 == 0)
+            cout << "Chislo " << ch << " kratno 4" << endl;
+        else
+            cout << "Chislo " << ch << " ne kratno 4" << endl;
+    }
+    system("pause");
+    return 0;
+}
