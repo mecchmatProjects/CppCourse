@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+int Space(char *s); //залишити лише по одному пробілу
+
+int main()
+{
+  char *s;
+  s = "file3.txt";
+  int x = Space(s);
+  printf("%d\n", x);
+}
+
+int Space(char *s)
+{
+  FILE *f;
+  f = fopen(s, "r");
+  char *r;
+  r = (char *) malloc(sizeof(char));
+  int n = 0;
+  while(!feof(f))
+  {
+    char c;
+    fscanf(f, "%c", &c);
+    r[n] = c;
+    r = (char *) realloc(r, sizeof(char));
+    n++;
+  }
+  fclose(f);
+  char r1[n];
+  int k = 0;
+  int j = 0;
+  for(int i = 0; i < n; i++ )
+  {
+    if(r[i] == r1[i - k - 1] && r[i] == ' ')
+    {
+      k++;
+    }
+    else{
+      r1[i - k] = r[i];
+      j++;
+    }
+  }
+  FILE *f1 = fopen("H.txt", "w");
+  for(int i = 0; i < n; i++)
+  {
+    fprintf(f1, "%c", r1[i]);
+  }
+  fclose(f1);
+  free(r);
+  return 1;
+}
