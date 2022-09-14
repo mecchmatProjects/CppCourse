@@ -1,0 +1,136 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+float* read(char *name1){ 
+  FILE *f1;
+  f1 = fopen(name1, "rb");
+  float *r1 = (float *) malloc(sizeof(float));
+  int n1 = 0;
+  while(!feof(f1))
+  {
+    float c;
+    fread(&c, sizeof(float), 1, f1);
+    //printf("%f", c);
+    r1[n1] = c;
+    n1++;
+    r1 = (float *) realloc(r1, sizeof(float));}
+    fclose(f1);
+return r1;
+}
+void input(char *name){ 
+  FILE *f = fopen(name, "wb");
+  int n;
+  printf("n = ");
+  scanf("%d", &n);
+  for(int i = 0; i <= n; i++){
+    printf("Koef pry x^%d = ", i);
+    float g;
+    scanf("%f",&g);
+    float x[2] = {g, (float) i};
+    fwrite(&x, sizeof(float), 2, f);
+  }
+  fclose(f);
+}
+
+void output(char *name){ 
+  float *r = read(name);
+  int n = sizeof(r)/sizeof(float);
+    for(int i = n - 2; i > 3; --i){
+      if(i % 2 == 1){printf("%f*x^%d + ",r[i - 1],(int) r[i]);}
+    }
+    printf("%f*x + %f = 0", r[2] ,r[0]);
+  free(r);
+}
+void add(char *name1, char *name2, char *res){ 
+  float *r1 = read(name1);
+  float *r2 = read(name2);
+  int n1 = sizeof(r1)/sizeof(float);
+  int n2 = sizeof(r2)/sizeof(float);
+  int n = n1<n2?n1:n2;
+  FILE *re = fopen(res, "wb");
+  for(int i = 0; i <= n; ++i){
+    if (i % 2 == 0){
+    float x[2] = {r1[i] + r2[i], (float)i + 1};
+    printf("%f %f\n",r1[i] + r2[i], (float) i+1  );
+    fwrite(&x, sizeof(float), 2, re);}
+  }
+  if(n1 > n2){
+  for(int i = n + 1; i < n1; ++i ){
+    if (i % 2 == 0){
+    float x[2] = {r1[i], (float) i + 1};
+    fwrite(&x, sizeof(float), 2, re);}
+  }
+}
+else{
+  for(int i = n + 1; i < n1; ++i ){
+    if (i % 2 == 0){
+    float x[2] = {r2[i],(float) i + 1};
+    fwrite(&x, sizeof(float), 2, re);}
+}
+}
+fclose(re);
+free(r1); free(r2);
+}
+
+void sub(char *name1, char *name2, char *res){ 
+  float *r1 = read(name1);
+  float *r2 = read(name2);
+  int n1 = sizeof(r1)/sizeof(float);
+  int n2 = sizeof(r2)/sizeof(float);
+  int n = n1<n2?n1:n2;
+  FILE *re = fopen(res, "wb");
+  for(int i = 0; i <= n; ++i){
+    if (i % 2 == 0){
+    float x[2] = {r1[i] - r2[i], (float)i + 1};
+    printf("%f %f\n",r1[i] - r2[i], (float) i+1  );
+    fwrite(&x, sizeof(float), 2, re);}
+  }
+  if(n1 > n2){
+  for(int i = n + 1; i < n1; ++i ){
+    if (i % 2 == 0){
+    float x[2] = {r1[i], (float) i + 1};
+    fwrite(&x, sizeof(float), 2, re);}
+  }
+}
+else{
+  for(int i = n + 1; i < n1; ++i ){
+    if (i % 2 == 0){
+    float x[2] = {-r2[i],(float) i + 1};
+    fwrite(&x, sizeof(float), 2, re);}
+}
+}
+fclose(re);
+free(r1); free(r2);
+}
+
+void mult(char *name1, char *name2, char *res){ 
+  float *r1 = read(name1);
+  float *r2 = read(name2);
+  int n1 = sizeof(r1)/sizeof(float);
+  int n2 = sizeof(r2)/sizeof(float);
+  float r[2*n1*n2];
+  FILE *re = fopen(res, "wb");
+  for(int i = 0; i <=n1; ++i){
+    for(int j = 0; j <= n2; ++j){
+      if(i%2 == 0 && j%2 == 0){
+        r[i+j] += r1[i] * r2[j];
+        r[i+j+1] = i+j;
+      }
+    }
+  }
+  for(int i = 0; i <= 2*n2*n1; ++i ){
+    if (i % 2 == 0){
+    float x[2] = {r[i],(float) i + 1};
+    fwrite(&x, sizeof(float), 2, re);}
+}
+fclose(res); free(r1); free(r2); free(r3);
+}
+int main(){
+  char *name1 = "1.dat";
+  char *name2 = "2.dat";
+  char *res = "res.dat";
+  input(name1);
+  output(name1);
+
+}
